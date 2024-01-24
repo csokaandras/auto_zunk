@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace auto_zunk
 {
@@ -15,6 +16,13 @@ namespace auto_zunk
         public Form1()
         {
             InitializeComponent();
+
+            Kiiras_jarmu();
+        }
+
+        private void Kiiras_jarmu()
+        {
+            
         }
     }
 }

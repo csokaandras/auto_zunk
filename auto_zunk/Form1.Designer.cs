@@ -39,7 +39,7 @@ namespace auto_zunk
             this.label2 = new System.Windows.Forms.Label();
             this.szigSzamTBOX = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.autokkezeleseBTN = new System.Windows.Forms.Button();
+           // this.autokkezeleseBTN = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.osszesLBL = new System.Windows.Forms.Label();
             this.berbeadasokBTN1 = new System.Windows.Forms.Button();
@@ -48,7 +48,7 @@ namespace auto_zunk
             this.nev = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lakcim = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ugyfelGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -151,20 +151,20 @@ namespace auto_zunk
             this.torolBTN.Text = "Töröl";
             this.torolBTN.UseVisualStyleBackColor = true;
             // 
-            // ugyfelGrid
+            // dataGridView1
             // 
-            this.ugyfelGrid.AllowUserToAddRows = false;
-            this.ugyfelGrid.AllowUserToDeleteRows = false;
-            this.ugyfelGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ugyfelGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.sz_ig,
             this.nev,
             this.lakcim});
-            this.ugyfelGrid.Location = new System.Drawing.Point(12, 257);
-            this.ugyfelGrid.Name = "ugyfelGrid";
-            this.ugyfelGrid.ReadOnly = true;
-            this.ugyfelGrid.Size = new System.Drawing.Size(776, 157);
-            this.ugyfelGrid.TabIndex = 2;
+            this.dataGridView1.Location = new System.Drawing.Point(12, 257);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(776, 157);
+            this.dataGridView1.TabIndex = 2;
             // 
             // osszesLBL
             // 
@@ -214,7 +214,7 @@ namespace auto_zunk
             this.Controls.Add(this.berbeadasokBTN1);
             this.Controls.Add(this.osszesLBL);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button1);
+//            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.Margin = new System.Windows.Forms.Padding(6);
@@ -223,7 +223,7 @@ namespace auto_zunk
             this.Text = "Ügyfél";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ugyfelGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

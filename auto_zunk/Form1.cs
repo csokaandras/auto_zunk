@@ -74,5 +74,62 @@ namespace auto_zunk
                 MessageBox.Show("Hiba a berbeadasok.csv kiírással");
             }
         }
+
+        private void Beolvas_jarmuvek()
+        {
+            try
+            {
+                StreamReader file = new StreamReader("jarmu.csv");
+                file.ReadLine();
+                while (!file.EndOfStream)
+                {
+                    jarmuvek.Add(new Jarmu(file.ReadLine().Split(';')));
+                }
+                file.Close();
+            }
+            catch (IOException)
+            {
+                MessageBox.Show("Hiba a jarmu.csv beolvasással");
+            }
+        }
+
+        private void Beolvas_ugyfel()
+        {
+            try
+            {
+                StreamReader file = new StreamReader("ugyfel.csv");
+                file.ReadLine();
+                while (!file.EndOfStream)
+                {
+                    ugyfelek.Add(new Ugyfel(file.ReadLine().Split(';')));
+                }
+                file.Close();
+            }
+            catch (IOException)
+            {
+                MessageBox.Show("Hiba a ugyfel.csv beolvasással");
+            }
+        }
+
+        private void Beolvas_berbeadasok()
+        {
+            try
+            {
+                StreamReader file = new StreamReader("berbeadasok.csv");
+                file.ReadLine();
+                while (!file.EndOfStream)
+                {
+                    string[] sor = file.ReadLine().Split(';');
+                    Jarmu auto = jarmuvek.Find(item => item.rendszam.Equals(sor[0]));
+                    Ugyfel berlo = ugyfelek.Find(item => item.sz_ig.Equals(sor[1]));
+                    berbeadasok.Add(new Berbeadas(auto,berlo,Convert.ToDateTime(sor[2]), Convert.ToDateTime(sor[3]), Convert.ToInt32(sor[4]), Convert.ToInt32(sor[5]), Convert.ToInt32(sor[6])));
+                }
+                file.Close();
+            }
+            catch (IOException)
+            {
+                MessageBox.Show("Hiba a berbeadasok.csv beolvasással");
+            }
+        }
     }
 }

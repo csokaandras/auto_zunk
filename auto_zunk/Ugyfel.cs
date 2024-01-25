@@ -11,14 +11,12 @@ namespace auto_zunk
         public int sz_ig;
         public string nev;
         public string lakcim;
-        public bool cigany;
 
         public Ugyfel(string[] ugyfel)
         {
             sz_ig = Convert.ToInt32(ugyfel[0]);
             nev = ugyfel[1];
             lakcim = ugyfel[2];
-            cigany = Convert.ToBoolean(ugyfel[3]);
         }
     }
 }

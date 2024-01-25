@@ -49,7 +49,6 @@ namespace auto_zunk
             this.modellTBOX = new System.Windows.Forms.TextBox();
             this.kmoraTBOX = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.statisztikaTBOX = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -77,7 +76,7 @@ namespace auto_zunk
             this.dataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGrid.Location = new System.Drawing.Point(12, 361);
             this.dataGrid.Name = "dataGrid";
-            this.dataGrid.Size = new System.Drawing.Size(561, 172);
+            this.dataGrid.Size = new System.Drawing.Size(776, 172);
             this.dataGrid.TabIndex = 7;
             // 
             // autokkezeleseBTN
@@ -242,21 +241,11 @@ namespace auto_zunk
             this.label5.TabIndex = 14;
             this.label5.Text = "Kilométer óra:";
             // 
-            // statisztikaTBOX
-            // 
-            this.statisztikaTBOX.FormattingEnabled = true;
-            this.statisztikaTBOX.ItemHeight = 24;
-            this.statisztikaTBOX.Location = new System.Drawing.Point(579, 361);
-            this.statisztikaTBOX.Name = "statisztikaTBOX";
-            this.statisztikaTBOX.Size = new System.Drawing.Size(209, 172);
-            this.statisztikaTBOX.TabIndex = 10;
-            // 
             // Autok
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 569);
-            this.Controls.Add(this.statisztikaTBOX);
             this.Controls.Add(this.berbeadasokBTN);
             this.Controls.Add(this.osszesLBL);
             this.Controls.Add(this.dataGrid);
@@ -297,6 +286,5 @@ namespace auto_zunk
         private System.Windows.Forms.TextBox kmoraTBOX;
         private System.Windows.Forms.TextBox modellTBOX;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ListBox statisztikaTBOX;
     }
 }

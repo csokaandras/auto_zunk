@@ -53,6 +53,12 @@
       <DependentUpon>Autok.cs</DependentUpon>
     </Compile>
     <Compile Include="Berbeadas.cs" />
+    <Compile Include="Berbeadas_From.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Berbeadas_From.Designer.cs">
+      <DependentUpon>Berbeadas_From.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,6 +71,9 @@
     <Compile Include="Ugyfel.cs" />
     <EmbeddedResource Include="Autok.resx">
       <DependentUpon>Autok.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Berbeadas_From.resx">
+      <DependentUpon>Berbeadas_From.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

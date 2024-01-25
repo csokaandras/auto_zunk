@@ -15,6 +15,26 @@ namespace auto_zunk
         public Autok()
         {
             InitializeComponent();
+            this.CenterToScreen();
+        }
+
+        private void Autok_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void ugyfelekkezeleseBTN_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form1 ujForm = new Form1();
+            ujForm.ShowDialog();
+        }
+
+        private void berbeadasokBTN2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Berbeadas_From ujForm = new Berbeadas_From();
+            ujForm.ShowDialog();
         }
     }
 }

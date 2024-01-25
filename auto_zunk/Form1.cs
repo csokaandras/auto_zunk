@@ -131,5 +131,14 @@ namespace auto_zunk
                 MessageBox.Show("Hiba a berbeadasok.csv beolvasással");
             }
         }
+
+        private void UgyfelGridUpdate()
+        {
+            ugyfelGrid.Rows.Clear();
+            foreach (Ugyfel item in ugyfelek)
+            {
+                ugyfelGrid.Rows.Add();
+            }
+        }
     }
 }

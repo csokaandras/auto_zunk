@@ -30,7 +30,7 @@ namespace auto_zunk
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.autokkezeleseBTN = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.szigSzamTBOX = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -40,11 +40,12 @@ namespace auto_zunk
             this.felveszBTN = new System.Windows.Forms.Button();
             this.modositBTN = new System.Windows.Forms.Button();
             this.torolBTN = new System.Windows.Forms.Button();
-            this.dataGrid = new System.Windows.Forms.DataGridView();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.osszesLBL = new System.Windows.Forms.Label();
-            this.berbeadasokBTN = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -65,14 +66,14 @@ namespace auto_zunk
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ügyfél adatai:";
             // 
-            // autokkezeleseBTN
+            // button1
             // 
-            this.autokkezeleseBTN.Location = new System.Drawing.Point(573, 215);
-            this.autokkezeleseBTN.Name = "autokkezeleseBTN";
-            this.autokkezeleseBTN.Size = new System.Drawing.Size(215, 36);
-            this.autokkezeleseBTN.TabIndex = 1;
-            this.autokkezeleseBTN.Text = "Céges autók kezelése";
-            this.autokkezeleseBTN.UseVisualStyleBackColor = true;
+            this.button1.Location = new System.Drawing.Point(573, 215);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(215, 36);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Céges autók kezelése";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -149,13 +150,13 @@ namespace auto_zunk
             this.torolBTN.Text = "Töröl";
             this.torolBTN.UseVisualStyleBackColor = true;
             // 
-            // dataGrid
+            // dataGridView1
             // 
-            this.dataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGrid.Location = new System.Drawing.Point(12, 257);
-            this.dataGrid.Name = "dataGrid";
-            this.dataGrid.Size = new System.Drawing.Size(776, 157);
-            this.dataGrid.TabIndex = 2;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(12, 257);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(776, 157);
+            this.dataGridView1.TabIndex = 2;
             // 
             // osszesLBL
             // 
@@ -166,24 +167,24 @@ namespace auto_zunk
             this.osszesLBL.TabIndex = 3;
             this.osszesLBL.Text = "Összesen:";
             // 
-            // berbeadasokBTN
+            // button2
             // 
-            this.berbeadasokBTN.Location = new System.Drawing.Point(12, 215);
-            this.berbeadasokBTN.Name = "berbeadasokBTN";
-            this.berbeadasokBTN.Size = new System.Drawing.Size(215, 36);
-            this.berbeadasokBTN.TabIndex = 4;
-            this.berbeadasokBTN.Text = "Bérbeadások kezelése";
-            this.berbeadasokBTN.UseVisualStyleBackColor = true;
+            this.button2.Location = new System.Drawing.Point(12, 215);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(215, 36);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "Bérbeadások kezelése";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.berbeadasokBTN);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.osszesLBL);
-            this.Controls.Add(this.dataGrid);
-            this.Controls.Add(this.autokkezeleseBTN);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
@@ -192,7 +193,7 @@ namespace auto_zunk
             this.Text = "Ügyfél";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -210,10 +211,11 @@ namespace auto_zunk
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox szigSzamTBOX;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button autokkezeleseBTN;
-        private System.Windows.Forms.DataGridView dataGrid;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label osszesLBL;
-        private System.Windows.Forms.Button berbeadasokBTN;
+        private System.Windows.Forms.Button button2;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
 

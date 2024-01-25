@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Autok.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Autok.Designer.cs">
+      <DependentUpon>Autok.cs</DependentUpon>
+    </Compile>
     <Compile Include="Berbeadas.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -57,6 +63,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ugyfel.cs" />
+    <EmbeddedResource Include="Autok.resx">
+      <DependentUpon>Autok.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

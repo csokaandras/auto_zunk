@@ -32,24 +32,24 @@ namespace auto_zunk
             this.osszesLBL = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.elvitelkmoraTBOX = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.visszahozatalDTP = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
+            this.elvitelDTP = new System.Windows.Forms.DateTimePicker();
+            this.ugyfelCBOX = new System.Windows.Forms.ComboBox();
+            this.autoCBOX = new System.Windows.Forms.ComboBox();
             this.torolBTN = new System.Windows.Forms.Button();
             this.modositBTN = new System.Windows.Forms.Button();
             this.felveszBTN = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.autokkezeleseBTN = new System.Windows.Forms.Button();
+            this.autokkezeleseBTN2 = new System.Windows.Forms.Button();
+            this.ugyfelekkezelesBTN2 = new System.Windows.Forms.Button();
             this.statisztikaTBOX = new System.Windows.Forms.ListBox();
-            this.autoCBOX = new System.Windows.Forms.ComboBox();
-            this.ugyfelCBOX = new System.Windows.Forms.ComboBox();
-            this.elvitelDTP = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
-            this.visszahozatalDTP = new System.Windows.Forms.DateTimePicker();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.elvitelkmoraTBOX = new System.Windows.Forms.TextBox();
-            this.visszakmoraTBOX = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -73,7 +73,7 @@ namespace auto_zunk
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.visszakmoraTBOX);
+            this.groupBox1.Controls.Add(this.textBox2);
             this.groupBox1.Controls.Add(this.elvitelkmoraTBOX);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label6);
@@ -94,6 +94,79 @@ namespace auto_zunk
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Bérbeadások adatai:";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(233, 210);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(174, 29);
+            this.textBox2.TabIndex = 18;
+            // 
+            // elvitelkmoraTBOX
+            // 
+            this.elvitelkmoraTBOX.Location = new System.Drawing.Point(233, 175);
+            this.elvitelkmoraTBOX.Name = "elvitelkmoraTBOX";
+            this.elvitelkmoraTBOX.Size = new System.Drawing.Size(174, 29);
+            this.elvitelkmoraTBOX.TabIndex = 17;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(30, 213);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(190, 24);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Visszahozatal km óra:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(30, 178);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(126, 24);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Elvitel km óra:";
+            // 
+            // visszahozatalDTP
+            // 
+            this.visszahozatalDTP.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.visszahozatalDTP.Location = new System.Drawing.Point(233, 139);
+            this.visszahozatalDTP.Name = "visszahozatalDTP";
+            this.visszahozatalDTP.Size = new System.Drawing.Size(174, 29);
+            this.visszahozatalDTP.TabIndex = 13;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(30, 143);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(185, 24);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Visszahozatal dátum:";
+            // 
+            // elvitelDTP
+            // 
+            this.elvitelDTP.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.elvitelDTP.Location = new System.Drawing.Point(233, 104);
+            this.elvitelDTP.Name = "elvitelDTP";
+            this.elvitelDTP.Size = new System.Drawing.Size(174, 29);
+            this.elvitelDTP.TabIndex = 11;
+            // 
+            // ugyfelCBOX
+            // 
+            this.ugyfelCBOX.FormattingEnabled = true;
+            this.ugyfelCBOX.Location = new System.Drawing.Point(233, 66);
+            this.ugyfelCBOX.Name = "ugyfelCBOX";
+            this.ugyfelCBOX.Size = new System.Drawing.Size(174, 32);
+            this.ugyfelCBOX.TabIndex = 10;
+            // 
+            // autoCBOX
+            // 
+            this.autoCBOX.FormattingEnabled = true;
+            this.autoCBOX.Location = new System.Drawing.Point(233, 24);
+            this.autoCBOX.Name = "autoCBOX";
+            this.autoCBOX.Size = new System.Drawing.Size(174, 32);
+            this.autoCBOX.TabIndex = 9;
             // 
             // torolBTN
             // 
@@ -149,23 +222,25 @@ namespace auto_zunk
             this.label1.TabIndex = 0;
             this.label1.Text = "Autó:";
             // 
-            // button2
+            // autokkezeleseBTN2
             // 
-            this.button2.Location = new System.Drawing.Point(12, 324);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(215, 36);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "Céges autók kezelése";
-            this.button2.UseVisualStyleBackColor = true;
+            this.autokkezeleseBTN2.Location = new System.Drawing.Point(12, 324);
+            this.autokkezeleseBTN2.Name = "autokkezeleseBTN2";
+            this.autokkezeleseBTN2.Size = new System.Drawing.Size(215, 36);
+            this.autokkezeleseBTN2.TabIndex = 9;
+            this.autokkezeleseBTN2.Text = "Céges autók kezelése";
+            this.autokkezeleseBTN2.UseVisualStyleBackColor = true;
+            this.autokkezeleseBTN2.Click += new System.EventHandler(this.autokkezeleseBTN2_Click);
             // 
-            // autokkezeleseBTN
+            // ugyfelekkezelesBTN2
             // 
-            this.autokkezeleseBTN.Location = new System.Drawing.Point(588, 324);
-            this.autokkezeleseBTN.Name = "autokkezeleseBTN";
-            this.autokkezeleseBTN.Size = new System.Drawing.Size(209, 36);
-            this.autokkezeleseBTN.TabIndex = 10;
-            this.autokkezeleseBTN.Text = "Ügyfelek kezelése";
-            this.autokkezeleseBTN.UseVisualStyleBackColor = true;
+            this.ugyfelekkezelesBTN2.Location = new System.Drawing.Point(588, 324);
+            this.ugyfelekkezelesBTN2.Name = "ugyfelekkezelesBTN2";
+            this.ugyfelekkezelesBTN2.Size = new System.Drawing.Size(209, 36);
+            this.ugyfelekkezelesBTN2.TabIndex = 10;
+            this.ugyfelekkezelesBTN2.Text = "Ügyfelek kezelése";
+            this.ugyfelekkezelesBTN2.UseVisualStyleBackColor = true;
+            this.ugyfelekkezelesBTN2.Click += new System.EventHandler(this.ugyfelekkezelesBTN2_Click);
             // 
             // statisztikaTBOX
             // 
@@ -176,95 +251,23 @@ namespace auto_zunk
             this.statisztikaTBOX.Size = new System.Drawing.Size(209, 220);
             this.statisztikaTBOX.TabIndex = 11;
             // 
-            // autoCBOX
-            // 
-            this.autoCBOX.FormattingEnabled = true;
-            this.autoCBOX.Location = new System.Drawing.Point(233, 24);
-            this.autoCBOX.Name = "autoCBOX";
-            this.autoCBOX.Size = new System.Drawing.Size(174, 32);
-            this.autoCBOX.TabIndex = 9;
-            // 
-            // ugyfelCBOX
-            // 
-            this.ugyfelCBOX.FormattingEnabled = true;
-            this.ugyfelCBOX.Location = new System.Drawing.Point(233, 66);
-            this.ugyfelCBOX.Name = "ugyfelCBOX";
-            this.ugyfelCBOX.Size = new System.Drawing.Size(174, 32);
-            this.ugyfelCBOX.TabIndex = 10;
-            // 
-            // elvitelDTP
-            // 
-            this.elvitelDTP.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.elvitelDTP.Location = new System.Drawing.Point(233, 104);
-            this.elvitelDTP.Name = "elvitelDTP";
-            this.elvitelDTP.Size = new System.Drawing.Size(174, 29);
-            this.elvitelDTP.TabIndex = 11;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(30, 143);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(185, 24);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Visszahozatal dátum:";
-            // 
-            // visszahozatalDTP
-            // 
-            this.visszahozatalDTP.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.visszahozatalDTP.Location = new System.Drawing.Point(233, 139);
-            this.visszahozatalDTP.Name = "visszahozatalDTP";
-            this.visszahozatalDTP.Size = new System.Drawing.Size(174, 29);
-            this.visszahozatalDTP.TabIndex = 13;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(30, 213);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(190, 24);
-            this.label5.TabIndex = 16;
-            this.label5.Text = "Visszahozatal km óra:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(30, 178);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(126, 24);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Elvitel km óra:";
-            // 
-            // elvitelkmoraTBOX
-            // 
-            this.elvitelkmoraTBOX.Location = new System.Drawing.Point(233, 175);
-            this.elvitelkmoraTBOX.Name = "elvitelkmoraTBOX";
-            this.elvitelkmoraTBOX.Size = new System.Drawing.Size(174, 29);
-            this.elvitelkmoraTBOX.TabIndex = 17;
-            // 
-            // visszakmoraTBOX
-            // 
-            this.visszakmoraTBOX.Location = new System.Drawing.Point(233, 210);
-            this.visszakmoraTBOX.Name = "visszakmoraTBOX";
-            this.visszakmoraTBOX.Size = new System.Drawing.Size(174, 29);
-            this.visszakmoraTBOX.TabIndex = 18;
-            // 
             // Berbeadas_From
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 617);
             this.Controls.Add(this.statisztikaTBOX);
-            this.Controls.Add(this.autokkezeleseBTN);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.ugyfelekkezelesBTN2);
+            this.Controls.Add(this.autokkezeleseBTN2);
             this.Controls.Add(this.osszesLBL);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Berbeadas_From";
             this.ShowIcon = false;
             this.Text = "Bérbeadások kezelése";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Berbeadas_From_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -283,10 +286,10 @@ namespace auto_zunk
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button autokkezeleseBTN;
+        private System.Windows.Forms.Button autokkezeleseBTN2;
+        private System.Windows.Forms.Button ugyfelekkezelesBTN2;
         private System.Windows.Forms.ListBox statisztikaTBOX;
-        private System.Windows.Forms.TextBox visszakmoraTBOX;
+        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox elvitelkmoraTBOX;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;

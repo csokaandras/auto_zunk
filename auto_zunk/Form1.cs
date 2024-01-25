@@ -16,6 +16,7 @@ namespace auto_zunk
         public Form1()
         {
             InitializeComponent();
+            this.CenterToScreen();
         }
 
         static List<Jarmu> jarmuvek = new List<Jarmu>();
@@ -122,7 +123,7 @@ namespace auto_zunk
                     string[] sor = file.ReadLine().Split(';');
                     Jarmu auto = jarmuvek.Find(item => item.rendszam.Equals(sor[0]));
                     Ugyfel berlo = ugyfelek.Find(item => item.sz_ig.Equals(sor[1]));
-                    berbeadasok.Add(new Berbeadas(auto,berlo,Convert.ToDateTime(sor[2]), Convert.ToDateTime(sor[3]), Convert.ToInt32(sor[4]), Convert.ToInt32(sor[5]), Convert.ToInt32(sor[6])));
+                    berbeadasok.Add(new Berbeadas(auto, berlo, Convert.ToDateTime(sor[2]), Convert.ToDateTime(sor[3]), Convert.ToInt32(sor[4]), Convert.ToInt32(sor[5]), Convert.ToInt32(sor[6])));
                 }
                 file.Close();
             }
@@ -130,6 +131,20 @@ namespace auto_zunk
             {
                 MessageBox.Show("Hiba a berbeadasok.csv beolvasással");
             }
+        }
+
+        private void autokkezeleseBTN_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Autok ujForm = new Autok();
+            ujForm.ShowDialog();
+        }
+
+        private void berbeadasokBTN1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Berbeadas_From ujForm = new Berbeadas_From();
+            ujForm.ShowDialog();
         }
 
         private void UgyfelGridUpdate()

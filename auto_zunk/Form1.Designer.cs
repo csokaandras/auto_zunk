@@ -163,10 +163,16 @@ namespace auto_zunk
             this.nev,
             this.lakcim});
             this.ugyfelGrid.Location = new System.Drawing.Point(12, 257);
+            this.ugyfelGrid.MultiSelect = false;
             this.ugyfelGrid.Name = "ugyfelGrid";
             this.ugyfelGrid.ReadOnly = true;
+            this.ugyfelGrid.RowHeadersVisible = false;
+            this.ugyfelGrid.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.ugyfelGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ugyfelGrid.Size = new System.Drawing.Size(776, 157);
             this.ugyfelGrid.TabIndex = 2;
+            this.ugyfelGrid.SelectionChanged += new System.EventHandler(this.ugyfelGrid_SelectionChanged);
+            this.ugyfelGrid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tabControl1_KeyDown);
             // 
             // sz_ig
             // 
@@ -244,6 +250,7 @@ namespace auto_zunk
             this.button2.TabIndex = 8;
             this.button2.Text = "Töröl";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -252,6 +259,7 @@ namespace auto_zunk
             this.button3.Size = new System.Drawing.Size(96, 32);
             this.button3.TabIndex = 9;
             this.button3.Text = "Módosít";
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -260,6 +268,7 @@ namespace auto_zunk
             this.button4.Size = new System.Drawing.Size(96, 32);
             this.button4.TabIndex = 10;
             this.button4.Text = "Felvesz";
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // textBox1
             // 
@@ -324,6 +333,8 @@ namespace auto_zunk
             this.Name = "Form1";
             this.ShowIcon = false;
             this.Text = "Ügyfél";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tabControl1_KeyDown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ugyfelGrid)).EndInit();

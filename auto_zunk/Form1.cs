@@ -17,6 +17,8 @@ namespace auto_zunk
         {
             InitializeComponent();
             this.CenterToScreen();
+            Beolvas_ugyfel();
+            UgyfelGridUpdate();
         }
 
         static List<Jarmu> jarmuvek = new List<Jarmu>();
@@ -24,6 +26,7 @@ namespace auto_zunk
         static List<Berbeadas> berbeadasok = new List<Berbeadas>();
 
         static bool isLoaded = false;
+        static int selectedIndex = -1;
 
         private void Kiiras_jarmu()
         {
@@ -101,6 +104,7 @@ namespace auto_zunk
         {
             try
             {
+                ugyfelek.Clear();
                 StreamReader file = new StreamReader("ugyfel.csv");
                 file.ReadLine();
                 while (!file.EndOfStream)
@@ -140,6 +144,7 @@ namespace auto_zunk
         {
             this.Hide();
             Berbeadas_From ujForm = new Berbeadas_From();
+            
             ujForm.ShowDialog();
         }
         
@@ -153,6 +158,7 @@ namespace auto_zunk
                 ugyfelGrid.Rows[ugyfelGrid.Rows.Count - 1].Cells[1].Value = item.nev;
                 ugyfelGrid.Rows[ugyfelGrid.Rows.Count - 1].Cells[2].Value = item.lakcim;
             });
+            Kiiras_ugyfel();
             ugyfelGrid.ClearSelection();
             SetDefaultState();
             isLoaded = true;
@@ -161,20 +167,112 @@ namespace auto_zunk
         private void SetDefaultState()
         {
             ugyfelGrid.ClearSelection();
-            szigSzamTBOX.Text = "";
-            ugyNevTBOX.Text = "";
-            lakcimTBOX.Text = "";
-
-            torolBTN.Enabled = false;
-            felveszBTN.Enabled = true;
-            modositBTN.Enabled = false;
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
+            
+            button2.Enabled = false;
+            button4.Enabled = true;
+            button3.Enabled = false;
         }
         
         private void autokkezeleseBTN2_Click(object sender, EventArgs e)
         {
             this.Hide();
             Autok ujForm = new Autok();
+            
             ujForm.ShowDialog();
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
+            Application.Exit();
+        }
+
+        //hozzáad
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text!="" && textBox2.Text != "" && textBox3.Text != "")
+            {
+                isLoaded = false;
+                string uj_ugyfel = textBox3.Text + ";" + textBox2.Text + ";" + textBox1.Text;
+                ugyfelek.Add(new Ugyfel(uj_ugyfel.Split(';')));
+                UgyfelGridUpdate();
+                MessageBox.Show("Hozzá van adva az új adat!");
+            }
+            else
+            {
+                MessageBox.Show("Kérem adjon meg minden adatot!");
+            }
+        }
+        
+        //módosítás
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text != "" && textBox2.Text != "" && textBox3.Text != "")
+            {
+                isLoaded = false;
+                int index = ugyfelGrid.CurrentRow.Index;
+                ugyfelek[index].sz_ig = Convert.ToInt32(textBox3.Text);
+                ugyfelek[index].nev = textBox2.Text;
+                ugyfelek[index].lakcim = textBox1.Text;
+                UgyfelGridUpdate();
+                MessageBox.Show("Adat módosítva.");
+                
+            }
+            else
+            {
+                MessageBox.Show("Nem adta meg a szükséges adatokat.");
+            }
+        }
+
+        private void ugyfelGrid_SelectionChanged(object sender, EventArgs e)
+        {
+            int index;
+            if (isLoaded)
+            {
+                if (selectedIndex == -1)
+                {
+                    index = ugyfelGrid.CurrentRow.Index;
+                }
+                else
+                {
+                    index = selectedIndex;
+                }
+
+                if (index > -1)
+                {
+                    textBox3.Text = ugyfelGrid.Rows[index].Cells[0].Value.ToString();
+                    textBox2.Text = ugyfelGrid.Rows[index].Cells[1].Value.ToString();
+                    textBox1.Text = ugyfelGrid.Rows[index].Cells[2].Value.ToString();
+
+                    button2.Enabled = true;
+                    button4.Enabled = false;
+                    button3.Enabled = true;                    
+                }
+            }
+        }
+
+        private void tabControl1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                SetDefaultState();
+            }
+        }
+
+        //törlés
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Bizti?", "Megerősítés", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                isLoaded = false;
+                int index = ugyfelGrid.CurrentRow.Index;
+                ugyfelek.RemoveAt(index);
+                UgyfelGridUpdate();
+                MessageBox.Show("Sikeresen törölve!");
+            }
         }
     }
 }

@@ -22,6 +22,9 @@ namespace auto_zunk
         static List<Jarmu> jarmuvek = new List<Jarmu>();
         static List<Ugyfel> ugyfelek = new List<Ugyfel>();
         static List<Berbeadas> berbeadasok = new List<Berbeadas>();
+
+        static bool isLoaded = false;
+
         private void Kiiras_jarmu()
         {
             try
@@ -139,16 +142,34 @@ namespace auto_zunk
             Berbeadas_From ujForm = new Berbeadas_From();
             ujForm.ShowDialog();
         }
-        /*
+        
         private void UgyfelGridUpdate()
         {
             ugyfelGrid.Rows.Clear();
-            foreach (Ugyfel item in ugyfelek)
+            ugyfelek.ForEach(item =>
             {
                 ugyfelGrid.Rows.Add();
-            }
+                ugyfelGrid.Rows[ugyfelGrid.Rows.Count - 1].Cells[0].Value = item.sz_ig;
+                ugyfelGrid.Rows[ugyfelGrid.Rows.Count - 1].Cells[1].Value = item.nev;
+                ugyfelGrid.Rows[ugyfelGrid.Rows.Count - 1].Cells[2].Value = item.lakcim;
+            });
+            ugyfelGrid.ClearSelection();
+            SetDefaultState();
+            isLoaded = true;
         }
-        */
+
+        private void SetDefaultState()
+        {
+            ugyfelGrid.ClearSelection();
+            szigSzamTBOX.Text = "";
+            ugyNevTBOX.Text = "";
+            lakcimTBOX.Text = "";
+
+            torolBTN.Enabled = false;
+            felveszBTN.Enabled = true;
+            modositBTN.Enabled = false;
+        }
+        
         private void autokkezeleseBTN2_Click(object sender, EventArgs e)
         {
             this.Hide();

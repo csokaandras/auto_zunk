@@ -39,16 +39,22 @@ namespace auto_zunk
             this.label2 = new System.Windows.Forms.Label();
             this.szigSzamTBOX = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+
+            this.ugyfelGrid = new System.Windows.Forms.DataGridView();
+
+
+
             this.sz_ig = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nev = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lakcim = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.osszesLBL = new System.Windows.Forms.Label();
             this.berbeadasokBTN1 = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+
             this.autokkezeleseBTN2 = new System.Windows.Forms.Button();
+
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ugyfelGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -80,6 +86,19 @@ namespace auto_zunk
             // 
             // modositBTN
             // 
+
+            this.modositBTN.Location = new System.Drawing.Point(139, 164);
+            this.modositBTN.Name = "modositBTN";
+            this.modositBTN.Size = new System.Drawing.Size(75, 23);
+            this.modositBTN.TabIndex = 9;
+            // 
+            // felveszBTN
+            // 
+            this.felveszBTN.Location = new System.Drawing.Point(0, 168);
+            this.felveszBTN.Name = "felveszBTN";
+            this.felveszBTN.Size = new System.Drawing.Size(75, 23);
+            this.felveszBTN.TabIndex = 10;
+
             this.modositBTN.Location = new System.Drawing.Point(126, 159);
             this.modositBTN.Name = "modositBTN";
             this.modositBTN.Size = new System.Drawing.Size(96, 32);
@@ -93,6 +112,7 @@ namespace auto_zunk
             this.felveszBTN.Size = new System.Drawing.Size(96, 32);
             this.felveszBTN.TabIndex = 10;
             this.felveszBTN.Text = "Felvesz";
+
             // 
             // lakcimTBOX
             // 
@@ -142,20 +162,24 @@ namespace auto_zunk
             this.label1.TabIndex = 0;
             this.label1.Text = "Személyi i. szám:";
             // 
-            // dataGridView1
+
+            // ugyfelGrid
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ugyfelGrid.AllowUserToAddRows = false;
+            this.ugyfelGrid.AllowUserToDeleteRows = false;
+            this.ugyfelGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ugyfelGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.sz_ig,
             this.nev,
             this.lakcim});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 257);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(776, 157);
-            this.dataGridView1.TabIndex = 2;
+            this.ugyfelGrid.Location = new System.Drawing.Point(12, 257);
+            this.ugyfelGrid.Name = "ugyfelGrid";
+            this.ugyfelGrid.ReadOnly = true;
+            this.ugyfelGrid.Size = new System.Drawing.Size(776, 157);
+            this.ugyfelGrid.TabIndex = 2;
+
+            
+
             // 
             // sz_ig
             // 
@@ -197,6 +221,7 @@ namespace auto_zunk
             this.berbeadasokBTN1.UseVisualStyleBackColor = true;
             this.berbeadasokBTN1.Click += new System.EventHandler(this.berbeadasokBTN1_Click);
             // 
+
             // autokkezeleseBTN2
             // 
             this.autokkezeleseBTN2.Location = new System.Drawing.Point(573, 215);
@@ -215,8 +240,11 @@ namespace auto_zunk
             this.Controls.Add(this.autokkezeleseBTN2);
             this.Controls.Add(this.berbeadasokBTN1);
             this.Controls.Add(this.osszesLBL);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.groupBox1);
+
+            this.Controls.Add(this.ugyfelGrid);
+
+            this.Controls.Add(this.ugyfelGrid);
+
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Form1";
@@ -224,7 +252,7 @@ namespace auto_zunk
             this.Text = "Ügyfél";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ugyfelGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -243,7 +271,7 @@ namespace auto_zunk
         private System.Windows.Forms.TextBox szigSzamTBOX;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView ugyfelGrid;
         private System.Windows.Forms.Label osszesLBL;
         private System.Windows.Forms.Button berbeadasokBTN1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;

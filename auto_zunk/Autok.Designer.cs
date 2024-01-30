@@ -45,17 +45,21 @@ namespace auto_zunk
             this.felveszBTN = new System.Windows.Forms.Button();
             this.gyartoTBOX = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.tipusTBOX = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.rendszamTBOX = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // berbeadasokBTN2
             // 
-            this.berbeadasokBTN2.Location = new System.Drawing.Point(579, 319);
+            this.berbeadasokBTN2.Location = new System.Drawing.Point(579, 237);
             this.berbeadasokBTN2.Name = "berbeadasokBTN2";
             this.berbeadasokBTN2.Size = new System.Drawing.Size(209, 36);
             this.berbeadasokBTN2.TabIndex = 9;
@@ -66,7 +70,7 @@ namespace auto_zunk
             // osszesLBL
             // 
             this.osszesLBL.AutoSize = true;
-            this.osszesLBL.Location = new System.Drawing.Point(12, 536);
+            this.osszesLBL.Location = new System.Drawing.Point(12, 454);
             this.osszesLBL.Name = "osszesLBL";
             this.osszesLBL.Size = new System.Drawing.Size(99, 24);
             this.osszesLBL.TabIndex = 8;
@@ -75,14 +79,26 @@ namespace auto_zunk
             // dataGrid
             // 
             this.dataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGrid.Location = new System.Drawing.Point(12, 361);
+            this.dataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5});
+            this.dataGrid.Location = new System.Drawing.Point(12, 279);
+            this.dataGrid.MultiSelect = false;
             this.dataGrid.Name = "dataGrid";
+            this.dataGrid.ReadOnly = true;
+            this.dataGrid.RowHeadersVisible = false;
+            this.dataGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.dataGrid.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGrid.Size = new System.Drawing.Size(776, 172);
             this.dataGrid.TabIndex = 7;
             // 
             // ugyfelekkezeleseBTN
             // 
-            this.ugyfelekkezeleseBTN.Location = new System.Drawing.Point(12, 319);
+            this.ugyfelekkezeleseBTN.Location = new System.Drawing.Point(12, 237);
             this.ugyfelekkezeleseBTN.Name = "ugyfelekkezeleseBTN";
             this.ugyfelekkezeleseBTN.Size = new System.Drawing.Size(209, 36);
             this.ugyfelekkezeleseBTN.TabIndex = 6;
@@ -103,13 +119,12 @@ namespace auto_zunk
             this.groupBox1.Controls.Add(this.felveszBTN);
             this.groupBox1.Controls.Add(this.gyartoTBOX);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.tipusTBOX);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.rendszamTBOX);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(227, 17);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(346, 296);
+            this.groupBox1.Size = new System.Drawing.Size(346, 258);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Az autó adatai:";
@@ -117,7 +132,7 @@ namespace auto_zunk
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(7, 222);
+            this.label5.Location = new System.Drawing.Point(7, 178);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(126, 24);
             this.label5.TabIndex = 14;
@@ -125,22 +140,22 @@ namespace auto_zunk
             // 
             // kmoraTBOX
             // 
-            this.kmoraTBOX.Location = new System.Drawing.Point(166, 217);
+            this.kmoraTBOX.Location = new System.Drawing.Point(147, 173);
             this.kmoraTBOX.Name = "kmoraTBOX";
-            this.kmoraTBOX.Size = new System.Drawing.Size(174, 29);
+            this.kmoraTBOX.Size = new System.Drawing.Size(193, 29);
             this.kmoraTBOX.TabIndex = 13;
             // 
             // modellTBOX
             // 
-            this.modellTBOX.Location = new System.Drawing.Point(166, 182);
+            this.modellTBOX.Location = new System.Drawing.Point(147, 138);
             this.modellTBOX.Name = "modellTBOX";
-            this.modellTBOX.Size = new System.Drawing.Size(174, 29);
+            this.modellTBOX.Size = new System.Drawing.Size(193, 29);
             this.modellTBOX.TabIndex = 12;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 185);
+            this.label4.Location = new System.Drawing.Point(7, 141);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(72, 24);
             this.label4.TabIndex = 11;
@@ -149,7 +164,7 @@ namespace auto_zunk
             // teherRBTN
             // 
             this.teherRBTN.AutoSize = true;
-            this.teherRBTN.Location = new System.Drawing.Point(255, 71);
+            this.teherRBTN.Location = new System.Drawing.Point(255, 69);
             this.teherRBTN.Name = "teherRBTN";
             this.teherRBTN.Size = new System.Drawing.Size(79, 28);
             this.teherRBTN.TabIndex = 10;
@@ -160,7 +175,7 @@ namespace auto_zunk
             // szemelyRBTN
             // 
             this.szemelyRBTN.AutoSize = true;
-            this.szemelyRBTN.Location = new System.Drawing.Point(11, 71);
+            this.szemelyRBTN.Location = new System.Drawing.Point(147, 71);
             this.szemelyRBTN.Name = "szemelyRBTN";
             this.szemelyRBTN.Size = new System.Drawing.Size(100, 28);
             this.szemelyRBTN.TabIndex = 9;
@@ -170,7 +185,7 @@ namespace auto_zunk
             // 
             // torolBTN
             // 
-            this.torolBTN.Location = new System.Drawing.Point(249, 258);
+            this.torolBTN.Location = new System.Drawing.Point(249, 214);
             this.torolBTN.Name = "torolBTN";
             this.torolBTN.Size = new System.Drawing.Size(85, 32);
             this.torolBTN.TabIndex = 8;
@@ -179,7 +194,7 @@ namespace auto_zunk
             // 
             // modositBTN
             // 
-            this.modositBTN.Location = new System.Drawing.Point(137, 258);
+            this.modositBTN.Location = new System.Drawing.Point(137, 214);
             this.modositBTN.Name = "modositBTN";
             this.modositBTN.Size = new System.Drawing.Size(85, 32);
             this.modositBTN.TabIndex = 7;
@@ -188,7 +203,7 @@ namespace auto_zunk
             // 
             // felveszBTN
             // 
-            this.felveszBTN.Location = new System.Drawing.Point(6, 258);
+            this.felveszBTN.Location = new System.Drawing.Point(6, 214);
             this.felveszBTN.Name = "felveszBTN";
             this.felveszBTN.Size = new System.Drawing.Size(85, 32);
             this.felveszBTN.TabIndex = 6;
@@ -197,31 +212,24 @@ namespace auto_zunk
             // 
             // gyartoTBOX
             // 
-            this.gyartoTBOX.Location = new System.Drawing.Point(166, 149);
+            this.gyartoTBOX.Location = new System.Drawing.Point(147, 105);
             this.gyartoTBOX.Name = "gyartoTBOX";
-            this.gyartoTBOX.Size = new System.Drawing.Size(174, 29);
+            this.gyartoTBOX.Size = new System.Drawing.Size(193, 29);
             this.gyartoTBOX.TabIndex = 5;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 152);
+            this.label3.Location = new System.Drawing.Point(6, 108);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(69, 24);
             this.label3.TabIndex = 4;
             this.label3.Text = "Gyártó:";
             // 
-            // tipusTBOX
-            // 
-            this.tipusTBOX.Location = new System.Drawing.Point(166, 114);
-            this.tipusTBOX.Name = "tipusTBOX";
-            this.tipusTBOX.Size = new System.Drawing.Size(174, 29);
-            this.tipusTBOX.TabIndex = 3;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 117);
+            this.label2.Location = new System.Drawing.Point(6, 73);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 24);
             this.label2.TabIndex = 2;
@@ -229,9 +237,9 @@ namespace auto_zunk
             // 
             // rendszamTBOX
             // 
-            this.rendszamTBOX.Location = new System.Drawing.Point(166, 36);
+            this.rendszamTBOX.Location = new System.Drawing.Point(147, 36);
             this.rendszamTBOX.Name = "rendszamTBOX";
-            this.rendszamTBOX.Size = new System.Drawing.Size(174, 29);
+            this.rendszamTBOX.Size = new System.Drawing.Size(193, 29);
             this.rendszamTBOX.TabIndex = 1;
             // 
             // label1
@@ -243,11 +251,45 @@ namespace auto_zunk
             this.label1.TabIndex = 0;
             this.label1.Text = "Rendszám:";
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Rendszám";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 120;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Típus";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Gyártó";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 150;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Modell";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 200;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Km óra állása";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Width = 150;
+            // 
             // Autok
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 569);
+            this.ClientSize = new System.Drawing.Size(800, 482);
             this.Controls.Add(this.berbeadasokBTN2);
             this.Controls.Add(this.osszesLBL);
             this.Controls.Add(this.dataGrid);
@@ -279,7 +321,6 @@ namespace auto_zunk
         private System.Windows.Forms.Button felveszBTN;
         private System.Windows.Forms.TextBox gyartoTBOX;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox tipusTBOX;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox rendszamTBOX;
         private System.Windows.Forms.Label label1;
@@ -289,5 +330,10 @@ namespace auto_zunk
         private System.Windows.Forms.TextBox kmoraTBOX;
         private System.Windows.Forms.TextBox modellTBOX;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
     }
 }

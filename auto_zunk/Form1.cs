@@ -133,20 +133,13 @@ namespace auto_zunk
             }
         }
 
-        private void autokkezeleseBTN_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Autok ujForm = new Autok();
-            ujForm.ShowDialog();
-        }
-
         private void berbeadasokBTN1_Click(object sender, EventArgs e)
         {
             this.Hide();
             Berbeadas_From ujForm = new Berbeadas_From();
             ujForm.ShowDialog();
         }
-
+        /*
         private void UgyfelGridUpdate()
         {
             ugyfelGrid.Rows.Clear();
@@ -154,6 +147,13 @@ namespace auto_zunk
             {
                 ugyfelGrid.Rows.Add();
             }
+        }
+        */
+        private void autokkezeleseBTN2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Autok ujForm = new Autok();
+            ujForm.ShowDialog();
         }
     }
 }

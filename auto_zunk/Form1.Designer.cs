@@ -39,14 +39,14 @@ namespace auto_zunk
             this.label2 = new System.Windows.Forms.Label();
             this.szigSzamTBOX = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-           // this.autokkezeleseBTN = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.osszesLBL = new System.Windows.Forms.Label();
-            this.berbeadasokBTN1 = new System.Windows.Forms.Button();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.sz_ig = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nev = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lakcim = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.osszesLBL = new System.Windows.Forms.Label();
+            this.berbeadasokBTN1 = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.autokkezeleseBTN2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -71,44 +71,35 @@ namespace auto_zunk
             // 
             // torolBTN
             // 
-            this.torolBTN.Location = new System.Drawing.Point(255, 159);
+            this.torolBTN.Location = new System.Drawing.Point(244, 159);
             this.torolBTN.Name = "torolBTN";
-            this.torolBTN.Size = new System.Drawing.Size(85, 32);
+            this.torolBTN.Size = new System.Drawing.Size(96, 32);
             this.torolBTN.TabIndex = 8;
             this.torolBTN.Text = "Töröl";
             this.torolBTN.UseVisualStyleBackColor = true;
             // 
             // modositBTN
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 39);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(154, 24);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Személyi i. szám:";
+            this.modositBTN.Location = new System.Drawing.Point(126, 159);
+            this.modositBTN.Name = "modositBTN";
+            this.modositBTN.Size = new System.Drawing.Size(96, 32);
+            this.modositBTN.TabIndex = 9;
+            this.modositBTN.Text = "Módosít";
             // 
-            // szigSzamTBOX
+            // felveszBTN
             // 
-            this.szigSzamTBOX.Location = new System.Drawing.Point(166, 36);
-            this.szigSzamTBOX.Name = "szigSzamTBOX";
-            this.szigSzamTBOX.Size = new System.Drawing.Size(174, 29);
-            this.szigSzamTBOX.TabIndex = 1;
+            this.felveszBTN.Location = new System.Drawing.Point(10, 159);
+            this.felveszBTN.Name = "felveszBTN";
+            this.felveszBTN.Size = new System.Drawing.Size(96, 32);
+            this.felveszBTN.TabIndex = 10;
+            this.felveszBTN.Text = "Felvesz";
             // 
-            // label2
+            // lakcimTBOX
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 76);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 24);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Név:";
-            // 
-            // ugyNevTBOX
-            // 
-            this.ugyNevTBOX.Location = new System.Drawing.Point(166, 73);
-            this.ugyNevTBOX.Name = "ugyNevTBOX";
-            this.ugyNevTBOX.Size = new System.Drawing.Size(174, 29);
-            this.ugyNevTBOX.TabIndex = 3;
+            this.lakcimTBOX.Location = new System.Drawing.Point(166, 112);
+            this.lakcimTBOX.Name = "lakcimTBOX";
+            this.lakcimTBOX.Size = new System.Drawing.Size(174, 29);
+            this.lakcimTBOX.TabIndex = 5;
             // 
             // label3
             // 
@@ -119,12 +110,21 @@ namespace auto_zunk
             this.label3.TabIndex = 4;
             this.label3.Text = "Lakcím:";
             // 
-            // lakcimTBOX
+            // ugyNevTBOX
             // 
-            this.lakcimTBOX.Location = new System.Drawing.Point(166, 112);
-            this.lakcimTBOX.Name = "lakcimTBOX";
-            this.lakcimTBOX.Size = new System.Drawing.Size(174, 29);
-            this.lakcimTBOX.TabIndex = 5;
+            this.ugyNevTBOX.Location = new System.Drawing.Point(166, 73);
+            this.ugyNevTBOX.Name = "ugyNevTBOX";
+            this.ugyNevTBOX.Size = new System.Drawing.Size(174, 29);
+            this.ugyNevTBOX.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 76);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 24);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Név:";
             // 
             // szigSzamTBOX
             // 
@@ -142,15 +142,6 @@ namespace auto_zunk
             this.label1.TabIndex = 0;
             this.label1.Text = "Személyi i. szám:";
             // 
-            // torolBTN
-            // 
-            this.torolBTN.Location = new System.Drawing.Point(255, 159);
-            this.torolBTN.Name = "torolBTN";
-            this.torolBTN.Size = new System.Drawing.Size(85, 32);
-            this.torolBTN.TabIndex = 8;
-            this.torolBTN.Text = "Töröl";
-            this.torolBTN.UseVisualStyleBackColor = true;
-            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
@@ -165,25 +156,6 @@ namespace auto_zunk
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(776, 157);
             this.dataGridView1.TabIndex = 2;
-            // 
-            // osszesLBL
-            // 
-            this.osszesLBL.AutoSize = true;
-            this.osszesLBL.Location = new System.Drawing.Point(12, 417);
-            this.osszesLBL.Name = "osszesLBL";
-            this.osszesLBL.Size = new System.Drawing.Size(99, 24);
-            this.osszesLBL.TabIndex = 3;
-            this.osszesLBL.Text = "Összesen:";
-            // 
-            // berbeadasokBTN1
-            // 
-            this.berbeadasokBTN1.Location = new System.Drawing.Point(12, 215);
-            this.berbeadasokBTN1.Name = "berbeadasokBTN1";
-            this.berbeadasokBTN1.Size = new System.Drawing.Size(215, 36);
-            this.berbeadasokBTN1.TabIndex = 4;
-            this.berbeadasokBTN1.Text = "Bérbeadások kezelése";
-            this.berbeadasokBTN1.UseVisualStyleBackColor = true;
-            this.berbeadasokBTN1.Click += new System.EventHandler(this.berbeadasokBTN1_Click);
             // 
             // sz_ig
             // 
@@ -206,15 +178,44 @@ namespace auto_zunk
             this.lakcim.ReadOnly = true;
             this.lakcim.Width = 200;
             // 
+            // osszesLBL
+            // 
+            this.osszesLBL.AutoSize = true;
+            this.osszesLBL.Location = new System.Drawing.Point(12, 417);
+            this.osszesLBL.Name = "osszesLBL";
+            this.osszesLBL.Size = new System.Drawing.Size(99, 24);
+            this.osszesLBL.TabIndex = 3;
+            this.osszesLBL.Text = "Összesen:";
+            // 
+            // berbeadasokBTN1
+            // 
+            this.berbeadasokBTN1.Location = new System.Drawing.Point(12, 215);
+            this.berbeadasokBTN1.Name = "berbeadasokBTN1";
+            this.berbeadasokBTN1.Size = new System.Drawing.Size(215, 36);
+            this.berbeadasokBTN1.TabIndex = 4;
+            this.berbeadasokBTN1.Text = "Bérbeadások kezelése";
+            this.berbeadasokBTN1.UseVisualStyleBackColor = true;
+            this.berbeadasokBTN1.Click += new System.EventHandler(this.berbeadasokBTN1_Click);
+            // 
+            // autokkezeleseBTN2
+            // 
+            this.autokkezeleseBTN2.Location = new System.Drawing.Point(573, 215);
+            this.autokkezeleseBTN2.Name = "autokkezeleseBTN2";
+            this.autokkezeleseBTN2.Size = new System.Drawing.Size(215, 36);
+            this.autokkezeleseBTN2.TabIndex = 10;
+            this.autokkezeleseBTN2.Text = "Céges autók kezelése";
+            this.autokkezeleseBTN2.UseVisualStyleBackColor = true;
+            this.autokkezeleseBTN2.Click += new System.EventHandler(this.autokkezeleseBTN2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.autokkezeleseBTN2);
             this.Controls.Add(this.berbeadasokBTN1);
             this.Controls.Add(this.osszesLBL);
             this.Controls.Add(this.dataGridView1);
-//            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.Margin = new System.Windows.Forms.Padding(6);
@@ -249,6 +250,7 @@ namespace auto_zunk
         private System.Windows.Forms.DataGridViewTextBoxColumn sz_ig;
         private System.Windows.Forms.DataGridViewTextBoxColumn nev;
         private System.Windows.Forms.DataGridViewTextBoxColumn lakcim;
+        private System.Windows.Forms.Button autokkezeleseBTN2;
     }
 }
 

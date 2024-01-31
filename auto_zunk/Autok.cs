@@ -119,8 +119,8 @@ namespace auto_zunk
             szemelyRBTN.Checked = false;
             teherRBTN.Checked = false;
 
-            felveszBTN.Enabled = false;
-            modositBTN.Enabled = true;
+            felveszBTN.Enabled = true;
+            modositBTN.Enabled = false;
             torolBTN.Enabled = false;
         }
 
@@ -186,8 +186,8 @@ namespace auto_zunk
                     modellTBOX.Text = jarmuGrid.Rows[index].Cells[3].Value.ToString();
                     kmoraTBOX.Text = jarmuGrid.Rows[index].Cells[4].Value.ToString();
 
-                    felveszBTN.Enabled = true;
-                    modositBTN.Enabled = false;
+                    felveszBTN.Enabled = false;
+                    modositBTN.Enabled = true;
                     torolBTN.Enabled = true;
                 }
             }
@@ -234,7 +234,7 @@ namespace auto_zunk
                     tipus = "Teher";
                 }
 
-                string uj_jarmu = rendszamTBOX + ";" + tipus + ";" + gyartoTBOX.Text + ";" + modellTBOX.Text + ";" + 0 + ";" + kmoraTBOX.Text;
+                string uj_jarmu = rendszamTBOX.Text + ";" + tipus + ";" + gyartoTBOX.Text + ";" + modellTBOX.Text + ";" + 0 + ";" + kmoraTBOX.Text;
                 jarmuvek.Add(new Jarmu(uj_jarmu.Split(';')));
                 jarmuGridUpdate();
                 MessageBox.Show("Hozzá van adva az új adat!");

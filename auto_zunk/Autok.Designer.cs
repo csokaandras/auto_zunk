@@ -79,6 +79,8 @@ namespace auto_zunk
             // 
             // jarmuGrid
             // 
+            this.jarmuGrid.AllowUserToAddRows = false;
+            this.jarmuGrid.AllowUserToDeleteRows = false;
             this.jarmuGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.jarmuGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,

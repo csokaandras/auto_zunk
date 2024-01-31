@@ -17,14 +17,35 @@ namespace auto_zunk
         static List<Ugyfel> ugyfelek = new List<Ugyfel>();
         static List<Berbeadas> berbeadasok = new List<Berbeadas>();
 
+        static int kmAra = 100;
+
+        static bool isLoaded = false;
+        static int selectedIndex = -1;
+
         public Berbeadas_From()
         {
             InitializeComponent();
             this.CenterToScreen();
+            Beolvas_jarmuvek();
+            Beolvas_ugyfel();
             Beolvas_berbeadasok();
+            CboxFeltoltes();
 
 
-            StatisztikaSzamitas();
+            //StatisztikaSzamitas();
+        }
+
+        private void CboxFeltoltes()
+        {
+            for (int i = 0; i < jarmuvek.Count; i++)
+            {
+                autoCBOX.Items.Add(jarmuvek[i].rendszam);
+            }
+
+            for (int o = 0; o < ugyfelek.Count; o++)
+            {
+                ugyfelCBOX.Items.Add(ugyfelek[o].sz_ig);
+            }
         }
 
         private void StatisztikaSzamitas()
@@ -84,7 +105,7 @@ namespace auto_zunk
                     Sum += Convert.ToInt32(legtobbNap[o]);
                 }
             }
-            int osszeBevetel = osszKM * 250;
+            int osszeBevetel = osszKM * 100;
 
 
             statisztikaTBOX.Items.Add($"---------Statisztika---------");
@@ -93,6 +114,43 @@ namespace auto_zunk
             statisztikaTBOX.Items.Add($"Legtöbbet kölcsönző ügyfél: {legtobbUgyfel.Max()}-szor bérelt. Neve: {legtobbAuto[legtobbUgyfel.IndexOf(legtobbUgyfel.Max()) - 1]}");
             statisztikaTBOX.Items.Add($"Átlagos kölcsönzés naponta: {Sum/(legtobbNap.Count/2)}");
 
+        }
+        //Be olvasások
+        private void Beolvas_jarmuvek()
+        {
+            try
+            {
+                StreamReader file = new StreamReader("jarmu.csv");
+                file.ReadLine();
+                while (!file.EndOfStream)
+                {
+                    jarmuvek.Add(new Jarmu(file.ReadLine().Split(';')));
+                }
+                file.Close();
+            }
+            catch (IOException)
+            {
+                MessageBox.Show("Hiba a jarmu.csv beolvasással");
+            }
+        }
+
+        private void Beolvas_ugyfel()
+        {
+            try
+            {
+                ugyfelek.Clear();
+                StreamReader file = new StreamReader("ugyfel.csv");
+                file.ReadLine();
+                while (!file.EndOfStream)
+                {
+                    ugyfelek.Add(new Ugyfel(file.ReadLine().Split(';')));
+                }
+                file.Close();
+            }
+            catch (IOException)
+            {
+                MessageBox.Show("Hiba a ugyfel.csv beolvasással");
+            }
         }
 
         private void Beolvas_berbeadasok()
@@ -124,7 +182,7 @@ namespace auto_zunk
                 file.WriteLine("rendszam;sz_ig;elvitel_datuma;visszahozas_datuma;elvitel_km;visszahozas_km;osszeg");
                 foreach (Berbeadas item in berbeadasok)
                 {
-                    file.WriteLine(item.auto.rendszam + ";" + item.ugyfel.sz_ig + ";" + item.elvitel_datum + ";" + item.vissza_datum + ";" + item.elvitel_km + ";" + item.vissza_km + ";" + item.osszeg);
+                    file.WriteLine(item.auto.rendszam + ";" + item.ugyfel.sz_ig + ";" + item.elvitel_datum + ";" + item.vissza_datum + ";" + item.elvitel_km + ";" + item.vissza_km + ";" + item.osszeg + ";");
                 }
                 file.Close();
             }
@@ -152,6 +210,141 @@ namespace auto_zunk
             this.Hide();
             Form1 ujForm = new Form1();
             ujForm.ShowDialog();
+        }
+
+        private void felveszBTN_Click(object sender, EventArgs e)
+        {
+            if (autoCBOX.Text != "" && ugyfelCBOX.Text != "" && elvitelDTP.Text != "" || visszahozatalDTP.Text != "" || elvitelkmoraTBOX.Text != "" || visszaKmTBOX.Text != "")
+            {
+                isLoaded = false;
+                Jarmu KivAuto = null;
+                Ugyfel KivUgyfel = null;
+
+                for (int i = 0; i < jarmuvek.Count; i++)
+                {
+                    if (jarmuvek[i].rendszam == autoCBOX.Text)
+                    {
+                        KivAuto = jarmuvek[i];
+                    }
+                }
+
+                for (int o = 0; o < ugyfelek.Count; o++)
+                {
+                    if (ugyfelek[o].sz_ig == Convert.ToInt32(ugyfelCBOX.Text))
+                    {
+                        KivUgyfel = ugyfelek[o];
+                    }
+                }
+                berbeadasok.Add(new Berbeadas(KivAuto, KivUgyfel, Convert.ToDateTime(elvitelDTP), Convert.ToDateTime(visszahozatalDTP.Text), Convert.ToInt32(elvitelkmoraTBOX.Text), Convert.ToInt32(visszaKmTBOX.Text), (Convert.ToInt32(visszaKmTBOX.Text) - Convert.ToInt32(elvitelkmoraTBOX.Text)) * kmAra));
+                UgyfelGridUpdate();
+                MessageBox.Show("Hozzá van adva az új adat!");
+            }
+            else
+            {
+                MessageBox.Show("Kérem adjon meg minden adatot!");
+            }
+        }
+
+        private void modositBTN_Click(object sender, EventArgs e)
+        {
+            if (autoCBOX.Text != "" && ugyfelCBOX.Text != "" && elvitelDTP.Text != "" || visszahozatalDTP.Text != "" || elvitelkmoraTBOX.Text != "" || visszaKmTBOX.Text != "")
+            {
+                isLoaded = false;
+                int index = dataGridView1.CurrentRow.Index;
+                Jarmu KivAuto = null;
+                Ugyfel KivUgyfel = null;
+
+                for (int i = 0; i < jarmuvek.Count; i++)
+                {
+                    if (jarmuvek[i].rendszam == autoCBOX.Text)
+                    {
+                        KivAuto = jarmuvek[i];
+                    }
+                }
+
+                for (int o = 0; o < ugyfelek.Count; o++)
+                {
+                    if (ugyfelek[o].sz_ig == Convert.ToInt32(ugyfelCBOX.Text))
+                    {
+                        KivUgyfel = ugyfelek[o];
+                    }
+                }
+                berbeadasok[index].auto = KivAuto;
+                berbeadasok[index].ugyfel = KivUgyfel;
+                berbeadasok[index].elvitel_datum = Convert.ToDateTime(elvitelDTP.Text);
+                berbeadasok[index].vissza_datum = Convert.ToDateTime(visszahozatalDTP.Text);
+                berbeadasok[index].vissza_km = Convert.ToInt32(visszaKmTBOX.Text);
+                berbeadasok[index].elvitel_km= Convert.ToInt32(elvitelkmoraTBOX.Text);
+                UgyfelGridUpdate();
+                MessageBox.Show("Adat módosítva.");
+
+            }
+            else
+            {
+                MessageBox.Show("Nem adta meg a szükséges adatokat.");
+            }
+        }
+
+        private void ugyfelGrid_SelectionChanged(object sender, EventArgs e)
+        {
+            int index;
+            if (isLoaded)
+            {
+                if (selectedIndex == -1)
+                {
+                    index = dataGridView1.CurrentRow.Index;
+                }
+                else
+                {
+                    index = selectedIndex;
+                }
+
+                if (index > -1)
+                {
+                    autoCBOX.Text = dataGridView1.Rows[index].Cells[0].Value.ToString();
+                    ugyfelCBOX.Text = dataGridView1.Rows[index].Cells[1].Value.ToString();
+                    elvitelDTP.Text = dataGridView1.Rows[index].Cells[2].Value.ToString();
+                    visszahozatalDTP.Text = dataGridView1.Rows[index].Cells[3].Value.ToString();
+                    elvitelkmoraTBOX.Text = dataGridView1.Rows[index].Cells[4].Value.ToString();
+                    visszaKmTBOX.Text = dataGridView1.Rows[index].Cells[5].Value.ToString();
+                    dataGridView1.Rows[index].Cells[6].Value = Convert.ToInt32(visszaKmTBOX.Text) - Convert.ToInt32(elvitelkmoraTBOX.Text) * kmAra;
+
+                    torolBTN.Enabled = true;
+                    felveszBTN.Enabled = false;
+                    modositBTN.Enabled = true;
+                }
+            }
+        }
+
+        private void UgyfelGridUpdate()
+        {
+            dataGridView1.Rows.Clear();
+            ugyfelek.ForEach(item =>
+            {
+                dataGridView1.Rows.Add();
+                dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[0].Value = item.sz_ig;
+                dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[1].Value = item.nev;
+                dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[2].Value = item.lakcim;
+            });
+            Kiiras_berbeadasok();
+            dataGridView1.ClearSelection();
+            SetDefaultState();
+            isLoaded = true;
+        }
+
+        private void SetDefaultState()
+        {
+            dataGridView1.ClearSelection();
+            autoCBOX.Text = "";
+            ugyfelCBOX.Text = "";
+            elvitelDTP.Text = "";
+            visszahozatalDTP.Text = "";
+            elvitelkmoraTBOX.Text = "";
+            visszaKmTBOX.Text = "";
+
+            torolBTN.Enabled = false;
+            modositBTN.Enabled = true;
+            felveszBTN.Enabled = false;
         }
     }
 }

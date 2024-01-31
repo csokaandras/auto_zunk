@@ -32,7 +32,7 @@ namespace auto_zunk
             this.osszesLBL = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.visszaKmTBOX = new System.Windows.Forms.TextBox();
             this.elvitelkmoraTBOX = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -50,6 +50,13 @@ namespace auto_zunk
             this.autokkezeleseBTN2 = new System.Windows.Forms.Button();
             this.ugyfelekkezelesBTN2 = new System.Windows.Forms.Button();
             this.statisztikaTBOX = new System.Windows.Forms.ListBox();
+            this.autoRendszam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UgyfelSzigSzam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ElvitelDatum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VisszahozatalDatum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ElvitelKmOra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VisszHozKmOra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Osszeg = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -65,15 +72,26 @@ namespace auto_zunk
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.autoRendszam,
+            this.UgyfelSzigSzam,
+            this.ElvitelDatum,
+            this.VisszahozatalDatum,
+            this.ElvitelKmOra,
+            this.VisszHozKmOra,
+            this.Osszeg});
             this.dataGridView1.Location = new System.Drawing.Point(12, 366);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(570, 217);
             this.dataGridView1.TabIndex = 7;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.visszaKmTBOX);
             this.groupBox1.Controls.Add(this.elvitelkmoraTBOX);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label6);
@@ -95,12 +113,12 @@ namespace auto_zunk
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Bérbeadások adatai:";
             // 
-            // textBox2
+            // visszaKmTBOX
             // 
-            this.textBox2.Location = new System.Drawing.Point(233, 210);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(174, 29);
-            this.textBox2.TabIndex = 18;
+            this.visszaKmTBOX.Location = new System.Drawing.Point(233, 210);
+            this.visszaKmTBOX.Name = "visszaKmTBOX";
+            this.visszaKmTBOX.Size = new System.Drawing.Size(174, 29);
+            this.visszaKmTBOX.TabIndex = 18;
             // 
             // elvitelkmoraTBOX
             // 
@@ -154,6 +172,7 @@ namespace auto_zunk
             // 
             // ugyfelCBOX
             // 
+            this.ugyfelCBOX.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ugyfelCBOX.FormattingEnabled = true;
             this.ugyfelCBOX.Location = new System.Drawing.Point(233, 66);
             this.ugyfelCBOX.Name = "ugyfelCBOX";
@@ -162,6 +181,7 @@ namespace auto_zunk
             // 
             // autoCBOX
             // 
+            this.autoCBOX.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.autoCBOX.FormattingEnabled = true;
             this.autoCBOX.Location = new System.Drawing.Point(233, 24);
             this.autoCBOX.Name = "autoCBOX";
@@ -185,6 +205,7 @@ namespace auto_zunk
             this.modositBTN.TabIndex = 7;
             this.modositBTN.Text = "Módosít";
             this.modositBTN.UseVisualStyleBackColor = true;
+            this.modositBTN.Click += new System.EventHandler(this.modositBTN_Click);
             // 
             // felveszBTN
             // 
@@ -194,6 +215,7 @@ namespace auto_zunk
             this.felveszBTN.TabIndex = 6;
             this.felveszBTN.Text = "Felvesz";
             this.felveszBTN.UseVisualStyleBackColor = true;
+            this.felveszBTN.Click += new System.EventHandler(this.felveszBTN_Click);
             // 
             // label3
             // 
@@ -209,18 +231,18 @@ namespace auto_zunk
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(30, 69);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 24);
+            this.label2.Size = new System.Drawing.Size(204, 24);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Ügyfél:";
+            this.label2.Text = "Ügyfél személyi száma:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(30, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 24);
+            this.label1.Size = new System.Drawing.Size(152, 24);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Autó:";
+            this.label1.Text = "Autó rendszáma:";
             // 
             // autokkezeleseBTN2
             // 
@@ -250,6 +272,48 @@ namespace auto_zunk
             this.statisztikaTBOX.Name = "statisztikaTBOX";
             this.statisztikaTBOX.Size = new System.Drawing.Size(209, 220);
             this.statisztikaTBOX.TabIndex = 11;
+            // 
+            // autoRendszam
+            // 
+            this.autoRendszam.HeaderText = "Autó rendszám";
+            this.autoRendszam.Name = "autoRendszam";
+            this.autoRendszam.ReadOnly = true;
+            // 
+            // UgyfelSzigSzam
+            // 
+            this.UgyfelSzigSzam.HeaderText = "Ügyfél személyi szám";
+            this.UgyfelSzigSzam.Name = "UgyfelSzigSzam";
+            this.UgyfelSzigSzam.ReadOnly = true;
+            // 
+            // ElvitelDatum
+            // 
+            this.ElvitelDatum.HeaderText = "Elvitel dátum";
+            this.ElvitelDatum.Name = "ElvitelDatum";
+            this.ElvitelDatum.ReadOnly = true;
+            // 
+            // VisszahozatalDatum
+            // 
+            this.VisszahozatalDatum.HeaderText = "Visszahozatal dátum";
+            this.VisszahozatalDatum.Name = "VisszahozatalDatum";
+            this.VisszahozatalDatum.ReadOnly = true;
+            // 
+            // ElvitelKmOra
+            // 
+            this.ElvitelKmOra.HeaderText = "Elvitel Km Óra";
+            this.ElvitelKmOra.Name = "ElvitelKmOra";
+            this.ElvitelKmOra.ReadOnly = true;
+            // 
+            // VisszHozKmOra
+            // 
+            this.VisszHozKmOra.HeaderText = "Visszahozatal km óra";
+            this.VisszHozKmOra.Name = "VisszHozKmOra";
+            this.VisszHozKmOra.ReadOnly = true;
+            // 
+            // Osszeg
+            // 
+            this.Osszeg.HeaderText = "Összeg";
+            this.Osszeg.Name = "Osszeg";
+            this.Osszeg.ReadOnly = true;
             // 
             // Berbeadas_From
             // 
@@ -289,7 +353,7 @@ namespace auto_zunk
         private System.Windows.Forms.Button autokkezeleseBTN2;
         private System.Windows.Forms.Button ugyfelekkezelesBTN2;
         private System.Windows.Forms.ListBox statisztikaTBOX;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox visszaKmTBOX;
         private System.Windows.Forms.TextBox elvitelkmoraTBOX;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
@@ -298,5 +362,12 @@ namespace auto_zunk
         private System.Windows.Forms.DateTimePicker elvitelDTP;
         private System.Windows.Forms.ComboBox ugyfelCBOX;
         private System.Windows.Forms.ComboBox autoCBOX;
+        private System.Windows.Forms.DataGridViewTextBoxColumn autoRendszam;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UgyfelSzigSzam;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ElvitelDatum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VisszahozatalDatum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ElvitelKmOra;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VisszHozKmOra;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Osszeg;
     }
 }

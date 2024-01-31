@@ -31,7 +31,7 @@ namespace auto_zunk
         {
             this.berbeadasokBTN2 = new System.Windows.Forms.Button();
             this.osszesLBL = new System.Windows.Forms.Label();
-            this.dataGrid = new System.Windows.Forms.DataGridView();
+            this.jarmuGrid = new System.Windows.Forms.DataGridView();
             this.ugyfelekkezeleseBTN = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -53,7 +53,8 @@ namespace auto_zunk
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.jarmuGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,25 +77,28 @@ namespace auto_zunk
             this.osszesLBL.TabIndex = 8;
             this.osszesLBL.Text = "Összesen:";
             // 
-            // dataGrid
+            // jarmuGrid
             // 
-            this.dataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.jarmuGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.jarmuGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
             this.Column3,
             this.Column4,
-            this.Column5});
-            this.dataGrid.Location = new System.Drawing.Point(12, 279);
-            this.dataGrid.MultiSelect = false;
-            this.dataGrid.Name = "dataGrid";
-            this.dataGrid.ReadOnly = true;
-            this.dataGrid.RowHeadersVisible = false;
-            this.dataGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGrid.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGrid.Size = new System.Drawing.Size(776, 172);
-            this.dataGrid.TabIndex = 7;
+            this.Column5,
+            this.Column6});
+            this.jarmuGrid.Location = new System.Drawing.Point(12, 279);
+            this.jarmuGrid.MultiSelect = false;
+            this.jarmuGrid.Name = "jarmuGrid";
+            this.jarmuGrid.ReadOnly = true;
+            this.jarmuGrid.RowHeadersVisible = false;
+            this.jarmuGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.jarmuGrid.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.jarmuGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.jarmuGrid.Size = new System.Drawing.Size(776, 172);
+            this.jarmuGrid.TabIndex = 7;
+            this.jarmuGrid.SelectionChanged += new System.EventHandler(this.jarmuGrid_SelectionChanged);
+            this.jarmuGrid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tabControl1_KeyDown);
             // 
             // ugyfelekkezeleseBTN
             // 
@@ -191,6 +195,7 @@ namespace auto_zunk
             this.torolBTN.TabIndex = 8;
             this.torolBTN.Text = "Töröl";
             this.torolBTN.UseVisualStyleBackColor = true;
+            this.torolBTN.Click += new System.EventHandler(this.button2_Click);
             // 
             // modositBTN
             // 
@@ -200,6 +205,7 @@ namespace auto_zunk
             this.modositBTN.TabIndex = 7;
             this.modositBTN.Text = "Módosít";
             this.modositBTN.UseVisualStyleBackColor = true;
+            this.modositBTN.Click += new System.EventHandler(this.button3_Click);
             // 
             // felveszBTN
             // 
@@ -209,6 +215,7 @@ namespace auto_zunk
             this.felveszBTN.TabIndex = 6;
             this.felveszBTN.Text = "Felvesz";
             this.felveszBTN.UseVisualStyleBackColor = true;
+            this.felveszBTN.Click += new System.EventHandler(this.felveszBTN_Click);
             // 
             // gyartoTBOX
             // 
@@ -280,10 +287,16 @@ namespace auto_zunk
             // 
             // Column5
             // 
-            this.Column5.HeaderText = "Km óra állása";
+            this.Column5.HeaderText = "Km óra";
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
-            this.Column5.Width = 150;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Kiadva?";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Width = 80;
             // 
             // Autok
             // 
@@ -292,7 +305,7 @@ namespace auto_zunk
             this.ClientSize = new System.Drawing.Size(800, 482);
             this.Controls.Add(this.berbeadasokBTN2);
             this.Controls.Add(this.osszesLBL);
-            this.Controls.Add(this.dataGrid);
+            this.Controls.Add(this.jarmuGrid);
             this.Controls.Add(this.ugyfelekkezeleseBTN);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
@@ -301,7 +314,8 @@ namespace auto_zunk
             this.ShowIcon = false;
             this.Text = "Autók kezelése";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Autok_FormClosing);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).EndInit();
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tabControl1_KeyDown);
+            ((System.ComponentModel.ISupportInitialize)(this.jarmuGrid)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -313,7 +327,7 @@ namespace auto_zunk
 
         private System.Windows.Forms.Button berbeadasokBTN2;
         private System.Windows.Forms.Label osszesLBL;
-        private System.Windows.Forms.DataGridView dataGrid;
+        private System.Windows.Forms.DataGridView jarmuGrid;
         private System.Windows.Forms.Button ugyfelekkezeleseBTN;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button torolBTN;
@@ -335,5 +349,6 @@ namespace auto_zunk
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
     }
 }

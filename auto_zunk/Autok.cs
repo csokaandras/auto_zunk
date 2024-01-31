@@ -16,6 +16,7 @@ namespace auto_zunk
         public Autok()
         {
             InitializeComponent();
+            Beolvas_jarmuvek();
             this.CenterToScreen();
         }
 
@@ -81,62 +82,72 @@ namespace auto_zunk
             }
         }
 
-        private void UgyfelGridUpdate()
+        private void jarmuGridUpdate()
         {
-            ugyfelGrid.Rows.Clear();
-            ugyfelek.ForEach(item =>
+            jarmuGrid.Rows.Clear();
+            jarmuvek.ForEach(item =>
             {
-                ugyfelGrid.Rows.Add();
-                ugyfelGrid.Rows[ugyfelGrid.Rows.Count - 1].Cells[0].Value = item.sz_ig;
-                ugyfelGrid.Rows[ugyfelGrid.Rows.Count - 1].Cells[1].Value = item.nev;
-                ugyfelGrid.Rows[ugyfelGrid.Rows.Count - 1].Cells[2].Value = item.lakcim;
+                jarmuGrid.Rows.Add();
+                jarmuGrid.Rows[jarmuGrid.Rows.Count - 1].Cells[0].Value = item.rendszam;
+                jarmuGrid.Rows[jarmuGrid.Rows.Count - 1].Cells[1].Value = item.tipus;
+                jarmuGrid.Rows[jarmuGrid.Rows.Count - 1].Cells[2].Value = item.gyarto;
+                jarmuGrid.Rows[jarmuGrid.Rows.Count - 1].Cells[3].Value = item.modell;
+                jarmuGrid.Rows[jarmuGrid.Rows.Count - 1].Cells[4].Value = item.km;
+                if (item.kiadva == 0)
+                {
+                    jarmuGrid.Rows[jarmuGrid.Rows.Count - 1].Cells[5].Value = "Nem";
+                }
+                else
+                {
+                    jarmuGrid.Rows[jarmuGrid.Rows.Count - 1].Cells[5].Value = "Igen";
+                }
             });
-            Kiiras_ugyfel();
-            ugyfelGrid.ClearSelection();
+            Kiiras_jarmu();
+            jarmuGrid.ClearSelection();
             SetDefaultState();
             isLoaded = true;
         }
 
         private void SetDefaultState()
         {
-            ugyfelGrid.ClearSelection();
-            textBox1.Text = "";
-            textBox2.Text = "";
-            textBox3.Text = "";
+            jarmuGrid.ClearSelection();
+            rendszamTBOX.Text = "";
+            gyartoTBOX.Text = "";
+            modellTBOX.Text = "";
+            kmoraTBOX.Text = "";
 
-            button2.Enabled = false;
-            button4.Enabled = true;
-            button3.Enabled = false;
-        }
+            szemelyRBTN.Checked = false;
+            teherRBTN.Checked = false;
 
-        //hozzáad
-        private void button4_Click(object sender, EventArgs e)
-        {
-            if (textBox1.Text != "" && textBox2.Text != "" && textBox3.Text != "")
-            {
-                isLoaded = false;
-                string uj_ugyfel = textBox3.Text + ";" + textBox2.Text + ";" + textBox1.Text;
-                ugyfelek.Add(new Ugyfel(uj_ugyfel.Split(';')));
-                UgyfelGridUpdate();
-                MessageBox.Show("Hozzá van adva az új adat!");
-            }
-            else
-            {
-                MessageBox.Show("Kérem adjon meg minden adatot!");
-            }
+            felveszBTN.Enabled = false;
+            modositBTN.Enabled = true;
+            torolBTN.Enabled = false;
         }
 
         //módosítás
         private void button3_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text != "" && textBox2.Text != "" && textBox3.Text != "")
+            if (rendszamTBOX.Text != "" 
+                && gyartoTBOX.Text != "" 
+                && modellTBOX.Text != "" 
+                && kmoraTBOX.Text != "" 
+                && (!szemelyRBTN.Checked || !teherRBTN.Checked))
             {
                 isLoaded = false;
-                int index = ugyfelGrid.CurrentRow.Index;
-                ugyfelek[index].sz_ig = Convert.ToInt32(textBox3.Text);
-                ugyfelek[index].nev = textBox2.Text;
-                ugyfelek[index].lakcim = textBox1.Text;
-                UgyfelGridUpdate();
+                int index = jarmuGrid.CurrentRow.Index;
+                jarmuvek[index].rendszam = rendszamTBOX.Text;
+                if (szemelyRBTN.Checked)
+                {
+                    jarmuvek[index].tipus = "Személy";
+                }
+                else
+                {
+                    jarmuvek[index].tipus = "Teher";
+                }
+                jarmuvek[index].gyarto = gyartoTBOX.Text;
+                jarmuvek[index].modell = modellTBOX.Text;
+                jarmuvek[index].km = Convert.ToInt32(kmoraTBOX.Text);
+                jarmuGridUpdate();
                 MessageBox.Show("Adat módosítva.");
 
             }
@@ -146,14 +157,14 @@ namespace auto_zunk
             }
         }
 
-        private void ugyfelGrid_SelectionChanged(object sender, EventArgs e)
+        private void jarmuGrid_SelectionChanged(object sender, EventArgs e)
         {
             int index;
             if (isLoaded)
             {
                 if (selectedIndex == -1)
                 {
-                    index = ugyfelGrid.CurrentRow.Index;
+                    index = jarmuGrid.CurrentRow.Index;
                 }
                 else
                 {
@@ -162,13 +173,22 @@ namespace auto_zunk
 
                 if (index > -1)
                 {
-                    textBox3.Text = ugyfelGrid.Rows[index].Cells[0].Value.ToString();
-                    textBox2.Text = ugyfelGrid.Rows[index].Cells[1].Value.ToString();
-                    textBox1.Text = ugyfelGrid.Rows[index].Cells[2].Value.ToString();
+                    rendszamTBOX.Text = jarmuGrid.Rows[index].Cells[0].Value.ToString();
+                    if (jarmuGrid.Rows[index].Cells[1].Value.ToString() == "Személy")
+                    {
+                        szemelyRBTN.Checked = true;
+                    }
+                    else
+                    {
+                        teherRBTN.Checked = true;
+                    }
+                    gyartoTBOX.Text = jarmuGrid.Rows[index].Cells[2].Value.ToString();
+                    modellTBOX.Text = jarmuGrid.Rows[index].Cells[3].Value.ToString();
+                    kmoraTBOX.Text = jarmuGrid.Rows[index].Cells[4].Value.ToString();
 
-                    button2.Enabled = true;
-                    button4.Enabled = false;
-                    button3.Enabled = true;
+                    felveszBTN.Enabled = true;
+                    modositBTN.Enabled = false;
+                    torolBTN.Enabled = true;
                 }
             }
         }
@@ -187,10 +207,41 @@ namespace auto_zunk
             if (MessageBox.Show("Bizti?", "Megerősítés", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 isLoaded = false;
-                int index = ugyfelGrid.CurrentRow.Index;
-                ugyfelek.RemoveAt(index);
-                UgyfelGridUpdate();
+                int index = jarmuGrid.CurrentRow.Index;
+                jarmuvek.RemoveAt(index);
+                jarmuGridUpdate();
                 MessageBox.Show("Sikeresen törölve!");
+            }
+        }
+
+        private void felveszBTN_Click(object sender, EventArgs e)
+        {
+            if (rendszamTBOX.Text != ""
+                && gyartoTBOX.Text != ""
+                && modellTBOX.Text != ""
+                && kmoraTBOX.Text != ""
+                && (!szemelyRBTN.Checked || !teherRBTN.Checked))
+            {
+                isLoaded = false;
+
+                string tipus = "";
+                if (szemelyRBTN.Checked)
+                {
+                    tipus = "Személy";
+                }
+                else
+                {
+                    tipus = "Teher";
+                }
+
+                string uj_jarmu = rendszamTBOX + ";" + tipus + ";" + gyartoTBOX.Text + ";" + modellTBOX.Text + ";" + 0 + ";" + kmoraTBOX.Text;
+                jarmuvek.Add(new Jarmu(uj_jarmu.Split(';')));
+                jarmuGridUpdate();
+                MessageBox.Show("Hozzá van adva az új adat!");
+            }
+            else
+            {
+                MessageBox.Show("Kérem adjon meg minden adatot!");
             }
         }
     }

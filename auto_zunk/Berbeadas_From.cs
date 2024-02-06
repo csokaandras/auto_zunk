@@ -33,7 +33,9 @@ namespace auto_zunk
             
             CboxFeltoltes();
             UgyfelGridUpdate();
-            StatisztikaSzamitas();
+
+
+            //StatisztikaSzamitas();
         }
 
         private void CboxFeltoltes()
@@ -56,66 +58,64 @@ namespace auto_zunk
             List<string> legtobbNap = new List<string>();
 
             int osszKM = 0;
+            int AutoIndex = 0;
+            int UgyfelIndex = 0;
+            int NapIndex = 0;
             int Sum = 0;
-
             for (int i = 0; i < berbeadasok.Count; i++)
             {
-                // Összes bevétel
-                osszKM += berbeadasok[i].elvitel_km - berbeadasok[i].vissza_km;
+                //Összes bevétel
+                osszKM = berbeadasok[i].elvitel_km - berbeadasok[i].vissza_km;
 
-                // Legtöbb autó
+                //Legtöbb autó
                 if (!legtobbAuto.Contains(berbeadasok[i].auto.rendszam))
                 {
                     legtobbAuto.Add(berbeadasok[i].auto.rendszam);
-                    legtobbAuto.Add("1");
                 }
                 else
                 {
-                    int AutoIndex = legtobbAuto.IndexOf(berbeadasok[i].auto.rendszam);
-                    int currentCount = Convert.ToInt32(legtobbAuto[AutoIndex + 1]);
-                    legtobbAuto[AutoIndex + 1] = (currentCount + 1).ToString();
+                    AutoIndex = legtobbAuto.IndexOf(berbeadasok[i].auto.rendszam);
+                    legtobbAuto[AutoIndex + 1] = (Convert.ToInt32(legtobbAuto[AutoIndex + 1]) + 1).ToString();
                 }
 
-                // Legtöbb ügyfél
+                //Legtöbb ügyfél
                 if (!legtobbUgyfel.Contains(berbeadasok[i].ugyfel.nev))
                 {
                     legtobbUgyfel.Add(berbeadasok[i].ugyfel.nev);
-                    legtobbUgyfel.Add("1");
                 }
                 else
                 {
-                    int UgyfelIndex = legtobbUgyfel.IndexOf(berbeadasok[i].ugyfel.nev);
-                    int currentCount = Convert.ToInt32(legtobbUgyfel[UgyfelIndex + 1]);
-                    legtobbUgyfel[UgyfelIndex + 1] = (currentCount + 1).ToString();
+                    UgyfelIndex = legtobbUgyfel.IndexOf(berbeadasok[i].ugyfel.nev);
+                    legtobbUgyfel[UgyfelIndex + 1] = (Convert.ToInt32(legtobbUgyfel[UgyfelIndex + 1]) + 1).ToString();
                 }
 
-                // Átlag bérbeadás / nap
-                string elvitelDatumString = berbeadasok[i].elvitel_datum.ToShortDateString();
-                if (!legtobbNap.Contains(elvitelDatumString))
+                //Átlag bérbeadás / nap
+                if(!legtobbNap.Contains(berbeadasok[i].elvitel_datum.ToString()))
                 {
-                    legtobbNap.Add(elvitelDatumString);
-                    legtobbNap.Add("1");
+                    legtobbNap.Add(berbeadasok[i].elvitel_datum.ToString());
                 }
                 else
                 {
-                    int NapIndex = legtobbNap.IndexOf(elvitelDatumString);
-                    int currentCount = Convert.ToInt32(legtobbNap[NapIndex + 1]);
-                    legtobbNap[NapIndex + 1] = (currentCount + 1).ToString();
+                    NapIndex = legtobbNap.IndexOf(berbeadasok[i].elvitel_datum.ToString());
+                    legtobbNap[NapIndex+1] = (Convert.ToInt32(legtobbNap[NapIndex + 1]) + 1).ToString();
                 }
             }
 
-            for (int o = 1; o < legtobbNap.Count; o += 2)
+            for (int o = 0; o < legtobbNap.Count; o++)
             {
-                Sum += Convert.ToInt32(legtobbNap[o]);
+                if (legtobbNap.IndexOf(legtobbNap[o])%2==1)
+                {
+                    Sum += Convert.ToInt32(legtobbNap[o]);
+                }
             }
-
             int osszeBevetel = osszKM * 100;
+
 
             statisztikaTBOX.Items.Add($"---------Statisztika---------");
             statisztikaTBOX.Items.Add($"Összes bevétel : {osszeBevetel} Ft");
-            statisztikaTBOX.Items.Add($"Legtöbbet kiadott autó: {legtobbAuto.Max()} -szor lett kiadva. Rendszáma: {legtobbAuto[legtobbAuto.IndexOf(legtobbAuto.Max()) - 1]}");
-            statisztikaTBOX.Items.Add($"Legtöbbet kölcsönző ügyfél: {legtobbUgyfel.Max()} -szor bérelt. Neve: {legtobbUgyfel[legtobbUgyfel.IndexOf(legtobbUgyfel.Max()) - 1]}");
-            statisztikaTBOX.Items.Add($"Átlagos kölcsönzés naponta: {Sum / (legtobbNap.Count / 2)}");
+            statisztikaTBOX.Items.Add($"Legtöbbet kiadott autó: {legtobbAuto.Max()}-szor lett kiadva. Rendszáma: {legtobbAuto[legtobbAuto.IndexOf(legtobbAuto.Max())-1]}");
+            statisztikaTBOX.Items.Add($"Legtöbbet kölcsönző ügyfél: {legtobbUgyfel.Max()}-szor bérelt. Neve: {legtobbAuto[legtobbUgyfel.IndexOf(legtobbUgyfel.Max()) - 1]}");
+            statisztikaTBOX.Items.Add($"Átlagos kölcsönzés naponta: {Sum/(legtobbNap.Count/2)}");
 
         }
         //Be olvasások
@@ -263,24 +263,9 @@ namespace auto_zunk
             {
                 isLoaded = false;
                 int index = dataGridView1.CurrentRow.Index;
-                Jarmu KivAuto = null;
-                Ugyfel KivUgyfel = null;
+                Jarmu KivAuto = jarmuvek.Find(item => item.rendszam.Equals(autoCBOX.SelectedItem.ToString())); ;
+                Ugyfel KivUgyfel = ugyfelek.Find(item => item.sz_ig.Equals(Convert.ToInt32(ugyfelCBOX.SelectedItem.ToString())));
 
-                for (int i = 0; i < jarmuvek.Count; i++)
-                {
-                    if (jarmuvek[i].rendszam == autoCBOX.Text)
-                    {
-                        KivAuto = jarmuvek[i];
-                    }
-                }
-
-                for (int o = 0; o < ugyfelek.Count; o++)
-                {
-                    if (ugyfelek[o].sz_ig == Convert.ToInt32(ugyfelCBOX.Text))
-                    {
-                        KivUgyfel = ugyfelek[o];
-                    }
-                }
                 berbeadasok[index].auto = KivAuto;
                 berbeadasok[index].ugyfel = KivUgyfel;
                 berbeadasok[index].elvitel_datum = Convert.ToDateTime(elvitelDTP.Text);
@@ -313,8 +298,8 @@ namespace auto_zunk
 
                 if (index > -1)
                 {
-                    autoCBOX.Text = dataGridView1.Rows[index].Cells[0].Value.ToString();
-                    ugyfelCBOX.Text = dataGridView1.Rows[index].Cells[1].Value.ToString();
+                    autoCBOX.SelectedItem = dataGridView1.Rows[index].Cells[0].Value.ToString();
+                    ugyfelCBOX.SelectedItem = dataGridView1.Rows[index].Cells[1].Value;
                     elvitelDTP.Text = dataGridView1.Rows[index].Cells[2].Value.ToString();
                     visszahozatalDTP.Text = dataGridView1.Rows[index].Cells[3].Value.ToString();
                     elvitelkmoraTBOX.Text = dataGridView1.Rows[index].Cells[4].Value.ToString();
@@ -350,8 +335,8 @@ namespace auto_zunk
         private void SetDefaultState()
         {
             dataGridView1.ClearSelection();
-            autoCBOX.SelectedItem = "";
-            ugyfelCBOX.SelectedItem = "";
+            autoCBOX.SelectedItem = null;
+            ugyfelCBOX.SelectedItem = null;
             elvitelDTP.Text = "";
             visszahozatalDTP.Text = "";
             elvitelkmoraTBOX.Text = "";
@@ -385,6 +370,18 @@ namespace auto_zunk
             catch (Exception)
             {
 
+            }
+        }
+
+        private void torolBTN_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Bizti?", "Megerősítés", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                isLoaded = false;
+                int index = dataGridView1.CurrentRow.Index;
+                berbeadasok.RemoveAt(index);
+                UgyfelGridUpdate();
+                MessageBox.Show("Sikeresen törölve!");
             }
         }
     }

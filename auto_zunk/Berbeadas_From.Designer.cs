@@ -158,7 +158,7 @@ namespace auto_zunk
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(547, 12);
+            this.groupBox1.Location = new System.Drawing.Point(635, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(445, 307);
             this.groupBox1.TabIndex = 5;
@@ -311,7 +311,7 @@ namespace auto_zunk
             // 
             // ugyfelekkezelesBTN2
             // 
-            this.ugyfelekkezelesBTN2.Location = new System.Drawing.Point(1289, 321);
+            this.ugyfelekkezelesBTN2.Location = new System.Drawing.Point(1477, 321);
             this.ugyfelekkezelesBTN2.Name = "ugyfelekkezelesBTN2";
             this.ugyfelekkezelesBTN2.Size = new System.Drawing.Size(209, 36);
             this.ugyfelekkezelesBTN2.TabIndex = 10;
@@ -325,14 +325,14 @@ namespace auto_zunk
             this.statisztikaTBOX.ItemHeight = 24;
             this.statisztikaTBOX.Location = new System.Drawing.Point(1289, 363);
             this.statisztikaTBOX.Name = "statisztikaTBOX";
-            this.statisztikaTBOX.Size = new System.Drawing.Size(209, 220);
+            this.statisztikaTBOX.Size = new System.Drawing.Size(397, 220);
             this.statisztikaTBOX.TabIndex = 11;
             // 
             // Berbeadas_From
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1514, 617);
+            this.ClientSize = new System.Drawing.Size(1699, 617);
             this.Controls.Add(this.statisztikaTBOX);
             this.Controls.Add(this.ugyfelekkezelesBTN2);
             this.Controls.Add(this.autokkezeleseBTN2);

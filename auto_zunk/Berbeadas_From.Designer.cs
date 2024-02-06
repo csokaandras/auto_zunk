@@ -175,6 +175,7 @@ namespace auto_zunk
             // 
             this.elvitelkmoraTBOX.Location = new System.Drawing.Point(233, 175);
             this.elvitelkmoraTBOX.Name = "elvitelkmoraTBOX";
+            this.elvitelkmoraTBOX.ReadOnly = true;
             this.elvitelkmoraTBOX.Size = new System.Drawing.Size(174, 29);
             this.elvitelkmoraTBOX.TabIndex = 17;
             // 
@@ -238,6 +239,7 @@ namespace auto_zunk
             this.autoCBOX.Name = "autoCBOX";
             this.autoCBOX.Size = new System.Drawing.Size(174, 32);
             this.autoCBOX.TabIndex = 9;
+            this.autoCBOX.SelectedIndexChanged += new System.EventHandler(this.autoCBOX_SelectedIndexChanged);
             // 
             // torolBTN
             // 

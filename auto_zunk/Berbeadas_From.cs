@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System;
+using System.Diagnostics.Eventing.Reader;
 
 namespace auto_zunk
 {
@@ -39,12 +40,6 @@ namespace auto_zunk
 
         private void CboxFeltoltes()
         {
-            /*
-             foreach(Jarmu item in jarmuvek)
-                {
-                    autoCBOX.Items.Add(item.rendszam);
-                }
-             */
             for (int i = 0; i < jarmuvek.Count; i++)
             {
                 autoCBOX.Items.Add(jarmuvek[i].rendszam);
@@ -224,36 +219,42 @@ namespace auto_zunk
 
         private void felveszBTN_Click(object sender, EventArgs e)
         {
-            if (autoCBOX.SelectedItem != null && ugyfelCBOX.SelectedItem != null && elvitelDTP.Text != "" || visszahozatalDTP.Text != "" || elvitelkmoraTBOX.Text != "" || visszaKmTBOX.Text != "")
+            if ((visszahozatalDTP.Value - elvitelDTP.Value).TotalDays <0)
             {
-                isLoaded = false;
-                Jarmu KivAuto = jarmuvek.Find(element => element.rendszam.Equals(autoCBOX.SelectedItem));
-                Ugyfel KivUgyfel = ugyfelek.Find(element => element.sz_ig.Equals(ugyfelCBOX.SelectedItem));
-                /*
-                for (int i = 0; i < jarmuvek.Count; i++)
-                {
-                    if (jarmuvek[i].rendszam == autoCBOX.Text)
-                    {
-                        KivAuto = jarmuvek[i];
-                    }
-                }
-                
-                for (int o = 0; o < ugyfelek.Count; o++)
-                {
-                    if (ugyfelek[o].sz_ig == Convert.ToInt32(ugyfelCBOX.Text))
-                    {
-                        KivUgyfel = ugyfelek[o];
-                    }
-                }
-                */
-                berbeadasok.Add(new Berbeadas(KivAuto, KivUgyfel, Convert.ToDateTime(elvitelDTP.Value), Convert.ToDateTime(visszahozatalDTP.Value), Convert.ToInt32(elvitelkmoraTBOX.Text), Convert.ToInt32(visszaKmTBOX.Text), (Convert.ToInt32(visszaKmTBOX.Text) - Convert.ToInt32(elvitelkmoraTBOX.Text)) * kmAra));
-                UgyfelGridUpdate();
-                MessageBox.Show("Hozzá van adva az új adat!");
+                MessageBox.Show("Vicces dátum");
             }
             else
             {
-                MessageBox.Show("Kérem adjon meg minden adatot!");
+                if (Convert.ToInt32(elvitelkmoraTBOX.Text)>Convert.ToInt32(visszaKmTBOX.Text))
+                {
+                    MessageBox.Show("Vicces kilométer");
+                }
+                else
+                {
+                    if (autoCBOX.SelectedItem != null && ugyfelCBOX.SelectedItem != null && elvitelDTP.Text != "" || visszahozatalDTP.Text != "" || elvitelkmoraTBOX.Text != "" || visszaKmTBOX.Text != "")
+                    {
+                        isLoaded = false;
+                        Jarmu KivAuto = jarmuvek.Find(element => element.rendszam.Equals(autoCBOX.SelectedItem));
+                        Ugyfel KivUgyfel = ugyfelek.Find(element => element.sz_ig.Equals(ugyfelCBOX.SelectedItem));
+                        berbeadasok.Add(new Berbeadas(KivAuto, KivUgyfel, Convert.ToDateTime(elvitelDTP.Value), Convert.ToDateTime(visszahozatalDTP.Value), Convert.ToInt32(elvitelkmoraTBOX.Text), Convert.ToInt32(visszaKmTBOX.Text), (Convert.ToInt32(visszaKmTBOX.Text) - Convert.ToInt32(elvitelkmoraTBOX.Text)) * kmAra));
+                        UgyfelGridUpdate();
+                        for (int i = 0; i < jarmuvek.Count; i++)
+                        {
+                            if (jarmuvek[i].rendszam == autoCBOX.Text)
+                            {
+                                jarmuvek[i].km = Convert.ToInt32(visszaKmTBOX.Text);
+                            }
+                        }
+                        MessageBox.Show("Hozzá van adva az új adat!");
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Kérem adjon meg minden adatot!");
+                    }
+                }
             }
+               
         }
 
         private void modositBTN_Click(object sender, EventArgs e)
@@ -366,6 +367,24 @@ namespace auto_zunk
             if (e.KeyCode == Keys.Escape)
             {
                 SetDefaultState();
+            }
+        }
+
+        private void autoCBOX_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                for (int i = 0; i < jarmuvek.Count; i++)
+                {
+                    if (jarmuvek[i].rendszam == autoCBOX.Text)
+                    {
+                        elvitelkmoraTBOX.Text = jarmuvek[i].km.ToString();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
             }
         }
     }

@@ -17,6 +17,7 @@ namespace auto_zunk
         {
             InitializeComponent();
             Beolvas_jarmuvek();
+            jarmuGridUpdate();
             this.CenterToScreen();
         }
 
@@ -103,7 +104,6 @@ namespace auto_zunk
                 }
             });
             Kiiras_jarmu();
-            jarmuGrid.ClearSelection();
             SetDefaultState();
             isLoaded = true;
         }
@@ -244,5 +244,7 @@ namespace auto_zunk
                 MessageBox.Show("Kérem adjon meg minden adatot!");
             }
         }
+
+        
     }
 }

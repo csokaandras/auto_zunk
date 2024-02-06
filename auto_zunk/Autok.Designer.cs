@@ -32,6 +32,12 @@ namespace auto_zunk
             this.berbeadasokBTN2 = new System.Windows.Forms.Button();
             this.osszesLBL = new System.Windows.Forms.Label();
             this.jarmuGrid = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ugyfelekkezeleseBTN = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -48,12 +54,6 @@ namespace auto_zunk
             this.label2 = new System.Windows.Forms.Label();
             this.rendszamTBOX = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.jarmuGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -101,6 +101,46 @@ namespace auto_zunk
             this.jarmuGrid.TabIndex = 7;
             this.jarmuGrid.SelectionChanged += new System.EventHandler(this.jarmuGrid_SelectionChanged);
             this.jarmuGrid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tabControl1_KeyDown);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Rendszám";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 120;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Típus";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Gyártó";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 150;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Modell";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 200;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Km óra";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Kiadva?";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Width = 80;
             // 
             // ugyfelekkezeleseBTN
             // 
@@ -260,46 +300,6 @@ namespace auto_zunk
             this.label1.TabIndex = 0;
             this.label1.Text = "Rendszám:";
             // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Rendszám";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 120;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Típus";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Gyártó";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 150;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Modell";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 200;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Km óra";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Kiadva?";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            this.Column6.Width = 80;
-            // 
             // Autok
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -316,6 +316,7 @@ namespace auto_zunk
             this.ShowIcon = false;
             this.Text = "Autók kezelése";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Autok_FormClosing);
+//            this.Load += new System.EventHandler(this.Autok_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tabControl1_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.jarmuGrid)).EndInit();
             this.groupBox1.ResumeLayout(false);

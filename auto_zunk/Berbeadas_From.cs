@@ -39,6 +39,12 @@ namespace auto_zunk
 
         private void CboxFeltoltes()
         {
+            /*
+             foreach(Jarmu item in jarmuvek)
+                {
+                    autoCBOX.Items.Add(item.rendszam);
+                }
+             */
             for (int i = 0; i < jarmuvek.Count; i++)
             {
                 autoCBOX.Items.Add(jarmuvek[i].rendszam);
@@ -122,6 +128,7 @@ namespace auto_zunk
         {
             try
             {
+                jarmuvek.Clear();
                 StreamReader file = new StreamReader("jarmu.csv");
                 file.ReadLine();
                 while (!file.EndOfStream)
@@ -159,6 +166,7 @@ namespace auto_zunk
         {
             try
             {
+                berbeadasok.Clear();
                 StreamReader file = new StreamReader("berbeadasok.csv");
                 file.ReadLine();
                 while (!file.EndOfStream)
@@ -184,7 +192,7 @@ namespace auto_zunk
                 file.WriteLine("rendszam;sz_ig;elvitel_datuma;visszahozas_datuma;elvitel_km;visszahozas_km;osszeg");
                 foreach (Berbeadas item in berbeadasok)
                 {
-                    file.WriteLine(item.auto.rendszam + ";" + item.ugyfel.sz_ig + ";" + item.elvitel_datum + ";" + item.vissza_datum + ";" + item.elvitel_km + ";" + item.vissza_km + ";" + item.osszeg + ";");
+                    file.WriteLine(item.auto.rendszam + ";" + item.ugyfel.sz_ig + ";" + item.elvitel_datum.ToString("yyyy/MM/dd") + ";" + item.vissza_datum.ToString("yyyy/MM/dd") + ";" + item.elvitel_km + ";" + item.vissza_km + ";" + item.osszeg + ";");
                 }
                 file.Close();
             }
@@ -341,8 +349,8 @@ namespace auto_zunk
         private void SetDefaultState()
         {
             dataGridView1.ClearSelection();
-            autoCBOX.Items.Clear();
-            ugyfelCBOX.Items.Clear();
+            autoCBOX.SelectedItem = "";
+            ugyfelCBOX.SelectedItem = "";
             elvitelDTP.Text = "";
             visszahozatalDTP.Text = "";
             elvitelkmoraTBOX.Text = "";

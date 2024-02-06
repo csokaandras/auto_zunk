@@ -31,6 +31,13 @@ namespace auto_zunk
         {
             this.osszesLBL = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.autoRendszam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UgyfelSzigSzam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ElvitelDatum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VisszahozatalDatum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ElvitelKmOra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VisszHozKmOra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Osszeg = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.visszaKmTBOX = new System.Windows.Forms.TextBox();
             this.elvitelkmoraTBOX = new System.Windows.Forms.TextBox();
@@ -50,13 +57,6 @@ namespace auto_zunk
             this.autokkezeleseBTN2 = new System.Windows.Forms.Button();
             this.ugyfelekkezelesBTN2 = new System.Windows.Forms.Button();
             this.statisztikaTBOX = new System.Windows.Forms.ListBox();
-            this.autoRendszam = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UgyfelSzigSzam = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ElvitelDatum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VisszahozatalDatum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ElvitelKmOra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VisszHozKmOra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Osszeg = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -91,6 +91,54 @@ namespace auto_zunk
             this.dataGridView1.Size = new System.Drawing.Size(1271, 217);
             this.dataGridView1.TabIndex = 7;
             this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tabControl1_KeyDown);
+            // 
+            // autoRendszam
+            // 
+            this.autoRendszam.HeaderText = "Autó rendszám";
+            this.autoRendszam.Name = "autoRendszam";
+            this.autoRendszam.ReadOnly = true;
+            this.autoRendszam.Width = 120;
+            // 
+            // UgyfelSzigSzam
+            // 
+            this.UgyfelSzigSzam.HeaderText = "Ügyfél személyi szám";
+            this.UgyfelSzigSzam.Name = "UgyfelSzigSzam";
+            this.UgyfelSzigSzam.ReadOnly = true;
+            this.UgyfelSzigSzam.Width = 220;
+            // 
+            // ElvitelDatum
+            // 
+            this.ElvitelDatum.HeaderText = "Elvitel dátum";
+            this.ElvitelDatum.Name = "ElvitelDatum";
+            this.ElvitelDatum.ReadOnly = true;
+            this.ElvitelDatum.Width = 200;
+            // 
+            // VisszahozatalDatum
+            // 
+            this.VisszahozatalDatum.HeaderText = "Visszahozatal dátum";
+            this.VisszahozatalDatum.Name = "VisszahozatalDatum";
+            this.VisszahozatalDatum.ReadOnly = true;
+            this.VisszahozatalDatum.Width = 200;
+            // 
+            // ElvitelKmOra
+            // 
+            this.ElvitelKmOra.HeaderText = "Elvitel km óra";
+            this.ElvitelKmOra.Name = "ElvitelKmOra";
+            this.ElvitelKmOra.ReadOnly = true;
+            this.ElvitelKmOra.Width = 200;
+            // 
+            // VisszHozKmOra
+            // 
+            this.VisszHozKmOra.HeaderText = "Visszahozatal km óra";
+            this.VisszHozKmOra.Name = "VisszHozKmOra";
+            this.VisszHozKmOra.ReadOnly = true;
+            this.VisszHozKmOra.Width = 200;
+            // 
+            // Osszeg
+            // 
+            this.Osszeg.HeaderText = "Összeg";
+            this.Osszeg.Name = "Osszeg";
+            this.Osszeg.ReadOnly = true;
             // 
             // groupBox1
             // 
@@ -275,54 +323,6 @@ namespace auto_zunk
             this.statisztikaTBOX.Name = "statisztikaTBOX";
             this.statisztikaTBOX.Size = new System.Drawing.Size(209, 220);
             this.statisztikaTBOX.TabIndex = 11;
-            // 
-            // autoRendszam
-            // 
-            this.autoRendszam.HeaderText = "Autó rendszám";
-            this.autoRendszam.Name = "autoRendszam";
-            this.autoRendszam.ReadOnly = true;
-            this.autoRendszam.Width = 120;
-            // 
-            // UgyfelSzigSzam
-            // 
-            this.UgyfelSzigSzam.HeaderText = "Ügyfél személyi szám";
-            this.UgyfelSzigSzam.Name = "UgyfelSzigSzam";
-            this.UgyfelSzigSzam.ReadOnly = true;
-            this.UgyfelSzigSzam.Width = 220;
-            // 
-            // ElvitelDatum
-            // 
-            this.ElvitelDatum.HeaderText = "Elvitel dátum";
-            this.ElvitelDatum.Name = "ElvitelDatum";
-            this.ElvitelDatum.ReadOnly = true;
-            this.ElvitelDatum.Width = 200;
-            // 
-            // VisszahozatalDatum
-            // 
-            this.VisszahozatalDatum.HeaderText = "Visszahozatal dátum";
-            this.VisszahozatalDatum.Name = "VisszahozatalDatum";
-            this.VisszahozatalDatum.ReadOnly = true;
-            this.VisszahozatalDatum.Width = 200;
-            // 
-            // ElvitelKmOra
-            // 
-            this.ElvitelKmOra.HeaderText = "Elvitel km óra";
-            this.ElvitelKmOra.Name = "ElvitelKmOra";
-            this.ElvitelKmOra.ReadOnly = true;
-            this.ElvitelKmOra.Width = 200;
-            // 
-            // VisszHozKmOra
-            // 
-            this.VisszHozKmOra.HeaderText = "Visszahozatal km óra";
-            this.VisszHozKmOra.Name = "VisszHozKmOra";
-            this.VisszHozKmOra.ReadOnly = true;
-            this.VisszHozKmOra.Width = 200;
-            // 
-            // Osszeg
-            // 
-            this.Osszeg.HeaderText = "Összeg";
-            this.Osszeg.Name = "Osszeg";
-            this.Osszeg.ReadOnly = true;
             // 
             // Berbeadas_From
             // 

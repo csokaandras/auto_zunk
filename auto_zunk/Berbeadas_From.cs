@@ -53,6 +53,20 @@ namespace auto_zunk
 
         private void StatisztikaSzamitas()
         {
+            int totalRevenue = berbeadasok.Sum(b => b.osszeg);
+
+            var mostRentedVehicle = berbeadasok.GroupBy(b => b.auto.rendszam).OrderByDescending(g => g.Count()).FirstOrDefault()?.Key;
+
+            var mostFrequentCustomer = berbeadasok.GroupBy(b => b.ugyfel.nev).OrderByDescending(g => g.Count()).FirstOrDefault()?.Key;
+
+            double averageRentalPerDay = berbeadasok.Count > 0 ? berbeadasok.Select(b => (b.vissza_datum - b.elvitel_datum).TotalDays).Average() : 0;
+
+            statisztikaTBOX.Items.Add($"Összes bevétel: {totalRevenue}");
+            statisztikaTBOX.Items.Add($"Legtöbbet bérbeadott autó: {mostRentedVehicle}");
+            statisztikaTBOX.Items.Add($"Legtöbbet kölcsönző ember: {mostFrequentCustomer}");
+            statisztikaTBOX.Items.Add($"Átlagos bérlés naponta: {averageRentalPerDay}");
+
+            /*
             List<string> legtobbAuto = new List<string>();
             List<string> legtobbUgyfel = new List<string>();
             List<string> legtobbNap = new List<string>();
@@ -119,7 +133,7 @@ namespace auto_zunk
             statisztikaTBOX.Items.Add($"Legtöbbet kölcsönző ügyfél: {legtobbUgyfel.Max()} -szor bérelt. Neve: {legtobbUgyfel[legtobbUgyfel.IndexOf(legtobbUgyfel.Max()) - 1]}");
             statisztikaTBOX.Items.Add($"Átlagos kölcsönzés naponta: {Sum / (legtobbNap.Count / 2)}");
 
-
+            */
         }
         //Be olvasások
         private void Beolvas_jarmuvek()
@@ -372,7 +386,7 @@ namespace auto_zunk
             }
             catch (Exception)
             {
-
+                MessageBox.Show("az baj");
             }
         }
 

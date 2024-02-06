@@ -86,8 +86,11 @@ namespace auto_zunk
             this.dataGridView1.Location = new System.Drawing.Point(12, 366);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1271, 217);
             this.dataGridView1.TabIndex = 7;
+            this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tabControl1_KeyDown);
             // 
             // groupBox1
             // 
@@ -278,13 +281,14 @@ namespace auto_zunk
             this.autoRendszam.HeaderText = "Autó rendszám";
             this.autoRendszam.Name = "autoRendszam";
             this.autoRendszam.ReadOnly = true;
+            this.autoRendszam.Width = 120;
             // 
             // UgyfelSzigSzam
             // 
             this.UgyfelSzigSzam.HeaderText = "Ügyfél személyi szám";
             this.UgyfelSzigSzam.Name = "UgyfelSzigSzam";
             this.UgyfelSzigSzam.ReadOnly = true;
-            this.UgyfelSzigSzam.Width = 200;
+            this.UgyfelSzigSzam.Width = 220;
             // 
             // ElvitelDatum
             // 
@@ -337,6 +341,7 @@ namespace auto_zunk
             this.ShowIcon = false;
             this.Text = "Bérbeadások kezelése";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Berbeadas_From_FormClosing);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tabControl1_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
